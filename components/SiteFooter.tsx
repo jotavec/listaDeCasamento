@@ -1,3 +1,3 @@
 export function SiteFooter() {
-  return <footer>Lista de Casamento</footer>;
+  return <footer>Jéssica & João Vítor</footer>;
 }

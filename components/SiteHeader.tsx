@@ -15,7 +15,7 @@ export function SiteHeader() {
   return (
     <header className="nav-wrap">
       <a className="monogram" href="#inicio" aria-label="Ir para o início">
-        LC
+        J & J
       </a>
 
       <button

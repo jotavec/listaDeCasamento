@@ -5,8 +5,8 @@ export function HeroSection() {
       <div className="hero-content">
         <p className="eyebrow">Nosso para sempre começa aqui</p>
         <h1>
-          <span>Lista de</span>
-          <span>Casamento</span>
+          <span>Jéssica</span>
+          <span>& João Vítor</span>
         </h1>
         <div className="gold-line" aria-hidden="true" />
       </div>
