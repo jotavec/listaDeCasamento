@@ -14,7 +14,7 @@ export function SiteHeader() {
 
   return (
     <header className="nav-wrap">
-      <a className="monogram" href="#inicio" aria-label="Ir para o início">
+      <a className="monogram" href="/login" aria-label="Acessar área administrativa">
         J & J
       </a>
 

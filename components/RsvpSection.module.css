@@ -1,0 +1,450 @@
+.section {
+  position: relative;
+  overflow: hidden;
+  padding: 110px 24px;
+  background:
+    radial-gradient(
+      circle at 50% 0%,
+      rgba(42, 79, 126, 0.52),
+      transparent 42%
+    ),
+    linear-gradient(
+      180deg,
+      #071a35 0%,
+      #041329 100%
+    );
+  color: white;
+}
+
+.glow {
+  position: absolute;
+  width: 520px;
+  height: 520px;
+  top: -280px;
+  left: 50%;
+  transform: translateX(-50%);
+  border-radius: 50%;
+  background: rgba(200, 162, 91, 0.08);
+  filter: blur(60px);
+  pointer-events: none;
+}
+
+.shell {
+  width: min(820px, 100%);
+  margin: 0 auto;
+  position: relative;
+}
+
+.header {
+  text-align: center;
+}
+
+.header p,
+.found p,
+.blockHeader p,
+.successCard > p {
+  margin: 0 0 9px;
+  color: #d7b36c;
+  font-family: var(--fontMontserrat), sans-serif;
+  font-size: 9px;
+  font-weight: 600;
+  letter-spacing: 0.27em;
+}
+
+.header h2 {
+  margin: 0;
+  font-family: var(--fontCormorant), Georgia, serif;
+  font-size: clamp(52px, 7vw, 76px);
+  font-weight: 500;
+}
+
+.header > span {
+  display: block;
+  margin-top: 14px;
+  color: rgba(255,255,255,.57);
+  font-size: 12px;
+}
+
+.searchCard,
+.invitationCard,
+.successCard {
+  margin-top: 42px;
+  border: 1px solid rgba(213, 183, 124, 0.38);
+  border-radius: 24px;
+  background: rgba(255,255,255,.055);
+  backdrop-filter: blur(18px);
+  box-shadow: 0 30px 90px rgba(0,0,0,.23);
+}
+
+.searchCard {
+  padding: 30px;
+}
+
+.searchCard label,
+.personField label,
+.childField label {
+  display: block;
+  margin-bottom: 8px;
+  color: rgba(255,255,255,.62);
+  font-family: var(--fontMontserrat), sans-serif;
+  font-size: 8px;
+  font-weight: 600;
+  letter-spacing: .08em;
+  text-transform: uppercase;
+}
+
+.searchRow {
+  display: grid;
+  grid-template-columns: 1fr auto;
+}
+
+.searchRow input,
+.personField input,
+.childField input {
+  width: 100%;
+  height: 52px;
+  padding: 0 16px;
+  border: 1px solid rgba(211,188,143,.32);
+  outline: none;
+  background: rgba(255,255,255,.07);
+  color: white;
+  font-size: 14px;
+}
+
+.searchRow input {
+  border-radius: 11px 0 0 11px;
+}
+
+.searchRow input:focus,
+.personField input:focus,
+.childField input:focus {
+  border-color: #d3ae67;
+}
+
+.searchRow button {
+  padding: 0 22px;
+  border: 1px solid #cda65f;
+  border-radius: 0 11px 11px 0;
+  background: #cda65f;
+  color: #071a35;
+  cursor: pointer;
+  font-family: var(--fontMontserrat), sans-serif;
+  font-size: 9px;
+  font-weight: 700;
+  letter-spacing: .08em;
+  text-transform: uppercase;
+}
+
+.searchRow button:disabled {
+  opacity: .6;
+}
+
+.invitationCard {
+  padding: 30px;
+}
+
+.found {
+  display: flex;
+  align-items: center;
+  gap: 17px;
+}
+
+.seal,
+.successSeal {
+  display: grid;
+  place-items: center;
+  border: 1px solid rgba(209, 176, 111, .55);
+  color: #e0bd76;
+  font-family: var(--fontCormorant), Georgia, serif;
+}
+
+.seal {
+  width: 60px;
+  height: 60px;
+  flex: 0 0 60px;
+  border-radius: 18px;
+  font-size: 20px;
+}
+
+.found h3,
+.successCard h3 {
+  margin: 0;
+  font-family: var(--fontCormorant), Georgia, serif;
+  font-size: 31px;
+  font-weight: 500;
+}
+
+.found span {
+  color: rgba(255,255,255,.55);
+  font-size: 11px;
+}
+
+.notice {
+  margin-top: 20px;
+  padding: 12px 14px;
+  border-radius: 10px;
+  background: rgba(211, 174, 103, .11);
+  color: rgba(255,255,255,.68);
+  font-size: 10px;
+  line-height: 1.5;
+}
+
+.question {
+  margin-top: 28px;
+  padding-top: 26px;
+  border-top: 1px solid rgba(255,255,255,.09);
+}
+
+.question > span {
+  display: block;
+  margin-bottom: 12px;
+  font-family: var(--fontCormorant), Georgia, serif;
+  font-size: 22px;
+}
+
+.choice {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 10px;
+}
+
+.choice button {
+  min-height: 50px;
+  border: 1px solid rgba(255,255,255,.16);
+  border-radius: 11px;
+  background: rgba(255,255,255,.04);
+  color: rgba(255,255,255,.72);
+  cursor: pointer;
+}
+
+.choice .selected {
+  border-color: #cda65f;
+  background: #cda65f;
+  color: #071a35;
+}
+
+.choice .selectedNo {
+  border-color: rgba(213,153,153,.55);
+  background: rgba(132,67,67,.35);
+  color: #ffe3e3;
+}
+
+.block {
+  margin-top: 28px;
+  padding-top: 26px;
+  border-top: 1px solid rgba(255,255,255,.09);
+}
+
+.blockHeader {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 20px;
+}
+
+.blockHeader h4 {
+  margin: 0;
+  font-family: var(--fontCormorant), Georgia, serif;
+  font-size: 22px;
+  font-weight: 500;
+}
+
+.blockHeader > div > span {
+  display: block;
+  margin-top: 4px;
+  color: rgba(255,255,255,.45);
+  font-size: 9px;
+}
+
+.blockHeader > button {
+  padding: 9px 12px;
+  border: 1px solid rgba(210,177,111,.45);
+  border-radius: 9px;
+  background: transparent;
+  color: #dfbf7c;
+  cursor: pointer;
+  font-size: 8px;
+}
+
+.fields {
+  margin-top: 16px;
+  display: grid;
+  gap: 10px;
+}
+
+.personField,
+.childField {
+  display: grid;
+  gap: 10px;
+  align-items: end;
+}
+
+.personField {
+  grid-template-columns: 1fr 34px;
+}
+
+.childField {
+  grid-template-columns: 1fr 90px 34px;
+}
+
+.personField > button,
+.childField > button {
+  width: 34px;
+  height: 52px;
+  border: 0;
+  border-radius: 8px;
+  background: rgba(255,255,255,.05);
+  color: rgba(255,255,255,.42);
+  cursor: pointer;
+  font-size: 18px;
+}
+
+.personField input,
+.childField input {
+  border-radius: 10px;
+}
+
+.age input {
+  text-align: center;
+}
+
+.emptyText {
+  margin: 13px 0 0;
+  color: rgba(255,255,255,.42);
+  font-size: 9px;
+}
+
+.submitArea {
+  margin-top: 30px;
+  padding-top: 24px;
+  display: flex;
+  justify-content: flex-end;
+  gap: 10px;
+  border-top: 1px solid rgba(255,255,255,.09);
+}
+
+.back,
+.confirm {
+  height: 46px;
+  padding: 0 18px;
+  border-radius: 10px;
+  cursor: pointer;
+  font-family: var(--fontMontserrat), sans-serif;
+  font-size: 8px;
+  font-weight: 700;
+  letter-spacing: .08em;
+  text-transform: uppercase;
+}
+
+.back {
+  border: 1px solid rgba(255,255,255,.15);
+  background: transparent;
+  color: rgba(255,255,255,.58);
+}
+
+.confirm {
+  border: 1px solid #cda65f;
+  background: #cda65f;
+  color: #071a35;
+}
+
+.successCard {
+  padding: 45px 30px;
+  display: grid;
+  justify-items: center;
+  text-align: center;
+}
+
+.successSeal {
+  width: 72px;
+  height: 72px;
+  margin-bottom: 22px;
+  border-radius: 50%;
+  font-size: 22px;
+}
+
+.successCard > span {
+  max-width: 510px;
+  margin-top: 10px;
+  color: rgba(255,255,255,.58);
+  font-size: 11px;
+  line-height: 1.6;
+}
+
+.successCard button {
+  margin-top: 25px;
+  padding: 11px 18px;
+  border: 1px solid rgba(212,179,111,.45);
+  border-radius: 9px;
+  background: transparent;
+  color: #dfbf7b;
+  cursor: pointer;
+}
+
+.error {
+  margin-top: 16px;
+  padding: 12px 15px;
+  border: 1px solid rgba(224,143,143,.28);
+  border-radius: 10px;
+  background: rgba(112,37,37,.25);
+  color: #ffdada;
+  font-size: 10px;
+  text-align: center;
+}
+
+.footer {
+  margin-top: 52px;
+  display: grid;
+  justify-items: center;
+  gap: 6px;
+  color: #d0ab65;
+  font-family: var(--fontCormorant), Georgia, serif;
+}
+
+.footer div {
+  font-size: 25px;
+}
+
+.footer span {
+  color: rgba(255,255,255,.35);
+  font-size: 11px;
+  letter-spacing: .18em;
+}
+
+@media (max-width: 650px) {
+  .section {
+    padding: 80px 16px;
+  }
+
+  .searchCard,
+  .invitationCard {
+    padding: 22px;
+  }
+
+  .searchRow {
+    grid-template-columns: 1fr;
+    gap: 9px;
+  }
+
+  .searchRow input,
+  .searchRow button {
+    border-radius: 10px;
+  }
+
+  .searchRow button {
+    height: 48px;
+  }
+
+  .choice {
+    grid-template-columns: 1fr;
+  }
+
+  .blockHeader {
+    align-items: flex-start;
+    flex-direction: column;
+  }
+
+  .childField {
+    grid-template-columns: 1fr 72px 34px;
+  }
+}

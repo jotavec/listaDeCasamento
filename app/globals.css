@@ -1,4 +1,4 @@
-@import url("https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Montserrat:wght@300;400;500;600&family=Monsieur+La+Doulaise&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400&family=Montserrat:wght@300;400;500;600&family=Pinyon+Script&display=swap");
 
 :root {
   --navy: #071a35;
@@ -19,7 +19,7 @@ body {
   margin: 0;
   background: var(--ivory);
   color: var(--ink);
-  font-family: "Montserrat", sans-serif;
+  font-family: var(--fontMontserrat), sans-serif;
 }
 
 button,
@@ -44,7 +44,7 @@ a {
 
 .monogram,
 .final-monogram {
-  font-family: "Monsieur La Doulaise", cursive;
+  font-family: var(--fontPinyon), cursive;
   font-size: 38px;
   letter-spacing: 0.08em;
   text-decoration: none;
@@ -121,18 +121,19 @@ h1 {
   justify-content: center;
   gap: 0.18em;
   white-space: nowrap;
-  font-family: "Monsieur La Doulaise", cursive;
+  font-family: var(--fontPinyon), cursive;
   font-weight: 400;
   letter-spacing: 0.01em;
-  font-size: clamp(54px, 5.5vw, 88px);
+  font-size: clamp(76px, 7vw, 122px);
   line-height: 1;
 }
 
 .gold-line {
-  width: 72px;
-  height: 1px;
-  margin: 34px auto 22px;
-  background: var(--gold);
+  width: 210px;
+  height: 26px;
+  margin: 24px auto 20px;
+  background: center / contain no-repeat url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 240 30' fill='none'%3E%3Cg stroke='%23d8b56a' stroke-width='1.15' stroke-linecap='round'%3E%3Cpath d='M8 15h42c12 0 18-10 28-10 11 0 15 10 26 10 8 0 12-5 16-10'/%3E%3Cpath d='M232 15h-42c-12 0-18-10-28-10-11 0-15 10-26 10-8 0-12-5-16-10'/%3E%3Cpath d='M50 15c10 0 15 9 24 9 8 0 14-5 18-10'/%3E%3Cpath d='M190 15c-10 0-15 9-24 9-8 0-14-5-18-10'/%3E%3C/g%3E%3Cpath d='M120 11l4 4-4 4-4-4 4-4Z' fill='%23d8b56a'/%3E%3C/svg%3E");
+  opacity: 0.9;
 }
 
 .hero-bottom {
@@ -149,30 +150,34 @@ h1 {
 
 .date {
   margin: 0;
-  font-family: "Cormorant Garamond", serif;
-  font-size: 20px;
-  letter-spacing: 0.3em;
+  font-family: var(--fontCormorant), serif;
+  font-size: 32px;
+  letter-spacing: 0.28em;
+  font-weight: 500;
+  text-shadow: 0 2px 12px rgba(0, 0, 0, 0.9);
 }
 
 .place {
-  margin: 7px 0 5px;
-  font-size: 8px;
+  margin: 10px 0 10px;
+  font-size: 12px;
   text-transform: uppercase;
-  letter-spacing: 0.26em;
-  opacity: 0.82;
+  letter-spacing: 0.30em;
+  opacity: 0.92;
+  font-weight: 500;
 }
 
 .scroll {
   color: white;
-  width: 38px;
-  height: 25px;
-  margin: 0 auto;
+  width: 52px;
+  height: 40px;
+  margin: 8px auto 0;
   text-decoration: none;
   display: grid;
   place-items: center;
-  font-family: "Cormorant Garamond", serif;
-  font-size: 31px;
+  font-family: var(--fontCormorant), serif;
+  font-size: 42px;
   line-height: 1;
+  text-shadow: 0 2px 12px rgba(0, 0, 0, 0.9);
   animation: float 2s ease-in-out infinite;
 }
 
@@ -191,7 +196,7 @@ h1 {
 
 h2 {
   margin: 8px 0 18px;
-  font-family: "Cormorant Garamond", serif;
+  font-family: var(--fontCormorant), serif;
   font-size: clamp(43px, 5vw, 70px);
   font-weight: 500;
   line-height: 1;
@@ -218,7 +223,7 @@ h2 {
 .intro-copy {
   max-width: 900px;
   margin: 0 auto;
-  font-family: "Cormorant Garamond", serif;
+  font-family: var(--fontCormorant), serif;
   font-size: clamp(23px, 2vw, 29px);
   line-height: 1.7;
   color: #4f5b6d;
@@ -230,7 +235,7 @@ blockquote {
   padding: 32px 38px;
   border-top: 1px solid #d7c6a7;
   border-bottom: 1px solid #d7c6a7;
-  font-family: "Cormorant Garamond", serif;
+  font-family: var(--fontCormorant), serif;
   font-size: clamp(28px, 2.3vw, 35px);
   font-style: italic;
 }
@@ -238,7 +243,7 @@ blockquote {
 blockquote cite {
   display: block;
   margin-top: 12px;
-  font-family: "Montserrat", sans-serif;
+  font-family: var(--fontMontserrat), sans-serif;
   font-size: 9px;
   letter-spacing: 0.25em;
   text-transform: uppercase;
@@ -305,7 +310,7 @@ blockquote cite {
   background: rgba(5, 24, 53, 0.73);
   color: white;
   backdrop-filter: blur(3px);
-  font-family: "Cormorant Garamond", serif;
+  font-family: var(--fontCormorant), serif;
   font-size: 52px;
   font-weight: 500;
   line-height: 1;
@@ -353,13 +358,13 @@ blockquote cite {
 .detail-icon {
   display: block;
   color: var(--gold);
-  font-family: "Cormorant Garamond", serif;
+  font-family: var(--fontCormorant), serif;
   font-size: 52px;
 }
 
 .detail-grid h3 {
   margin: 16px 0;
-  font-family: "Cormorant Garamond", serif;
+  font-family: var(--fontCormorant), serif;
   font-size: clamp(39px, 3.4vw, 48px);
   font-weight: 500;
 }
@@ -367,7 +372,7 @@ blockquote cite {
 .detail-grid p {
   min-height: 74px;
   color: #667082;
-  font-family: "Cormorant Garamond", serif;
+  font-family: var(--fontCormorant), serif;
   font-size: clamp(21px, 1.8vw, 25px);
   line-height: 1.65;
 }
@@ -416,7 +421,7 @@ blockquote cite {
 }
 
 .gifts-card p:not(.section-kicker) {
-  font-family: "Cormorant Garamond", serif;
+  font-family: var(--fontCormorant), serif;
   font-size: 20px;
   line-height: 1.7;
   color: #d8dee8;
@@ -434,7 +439,7 @@ blockquote cite {
 .rsvp > p:not(.section-kicker):not(.final-date) {
   max-width: 600px;
   margin: 0 auto 30px;
-  font-family: "Cormorant Garamond", serif;
+  font-family: var(--fontCormorant), serif;
   font-size: 20px;
   line-height: 1.7;
   color: #687286;
@@ -521,6 +526,8 @@ button:disabled {
   }
 
   .hero-content .eyebrow {
+  position: relative;
+  left: 10px;
     font-size: 8px;
     line-height: 1.7;
     letter-spacing: 0.24em;
@@ -533,8 +540,9 @@ button:disabled {
   }
 
   .hero-content .gold-line {
-    width: 54px;
-    margin: 25px auto 17px;
+    width: 180px;
+    height: 24px;
+    margin: 22px auto 16px;
   }
 
   .intro,
@@ -646,4 +654,261 @@ button:disabled {
   .scroll {
     animation: none;
   }
+}
+
+
+.nameSeparator {
+  font-family: Georgia, "Times New Roman", serif;
+  font-size: 0.38em;
+  font-style: italic;
+  font-weight: 400;
+  line-height: 1;
+  margin: 0 0.13em;
+  display: inline-block;
+  transform: translateY(-0.04em);
+  color: white;
+  text-shadow: 0 1px 3px rgba(0, 0, 0, 0.22);
+}
+
+
+.hero-content h1 {
+  position: relative;
+  left: 18px;
+}
+
+/* Countdown maior */
+.count-section .section-kicker {
+  font-size: 14px;
+  letter-spacing: 0.38em;
+}
+
+.count-section h2 {
+  font-size: clamp(64px, 6vw, 92px);
+  margin-top: 14px;
+}
+
+.countdown {
+  max-width: 920px;
+  gap: 30px;
+  margin-top: 54px;
+}
+
+.time-card {
+  min-width: 150px;
+}
+
+.time-card strong {
+  height: 125px;
+  font-size: 72px;
+  border-radius: 7px;
+}
+
+.time-card span {
+  margin-top: 14px;
+  font-size: 12px;
+  letter-spacing: 0.08em;
+}
+
+@media (max-width: 760px) {
+  .count-section h2 {
+    font-size: clamp(44px, 12vw, 64px);
+  }
+
+  .countdown {
+    gap: 10px;
+    margin-top: 34px;
+  }
+
+  .time-card {
+    min-width: 0;
+  }
+
+  .time-card strong {
+    height: 82px;
+    font-size: 48px;
+  }
+
+  .time-card span {
+    font-size: 9px;
+  }
+}
+
+.count-content {
+  transform: translateY(-28px);
+}
+
+@media (max-width: 760px) {
+  .count-content {
+    transform: translateY(-16px);
+  }
+}
+
+/* Contador minimalista */
+.time-card {
+  position: relative;
+  width: 25%;
+  min-width: 150px;
+  padding: 12px 30px 8px;
+}
+
+/* remove completamente os blocos */
+.time-card strong {
+  height: auto;
+  min-height: 92px;
+  display: grid;
+  place-items: center;
+
+  background: transparent;
+  border: 0;
+  border-radius: 0;
+  box-shadow: none;
+  backdrop-filter: none;
+
+  font-family: var(--fontCormorant), serif;
+  font-size: 78px;
+  font-weight: 400;
+  line-height: 1;
+
+  color: white;
+  text-shadow:
+    0 2px 8px rgba(0, 0, 0, 0.55),
+    0 0 18px rgba(0, 0, 0, 0.18);
+}
+
+/* remove aquela linha horizontal de dentro */
+.time-card strong::after {
+  display: none;
+}
+
+/* linhas douradas entre os números */
+.time-card:not(:last-child)::after {
+  content: "";
+  position: absolute;
+  top: 4px;
+  right: -15px;
+  width: 1px;
+  height: 112px;
+  background: linear-gradient(
+    to bottom,
+    transparent,
+    #d8b56a 20%,
+    #d8b56a 80%,
+    transparent
+  );
+  opacity: 0.9;
+}
+
+/* descrição embaixo */
+.time-card span {
+  display: block;
+  margin-top: 12px;
+
+  font-family: var(--fontMontserrat), sans-serif;
+  font-size: 14px;
+  font-weight: 500;
+  line-height: 1.2;
+
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+
+  color: rgba(255, 255, 255, 0.98);
+  opacity: 1;
+
+  text-shadow:
+    0 2px 5px rgba(0, 0, 0, 0.9),
+    0 0 10px rgba(0, 0, 0, 0.35);
+}
+
+@media (max-width: 760px) {
+  .time-card {
+    min-width: 0;
+    padding: 8px 8px 5px;
+  }
+
+  .time-card strong {
+    min-height: 62px;
+    font-size: 48px;
+  }
+
+  .time-card span {
+    margin-top: 8px;
+    font-size: 9px;
+    letter-spacing: 0.04em;
+  }
+
+  .time-card:not(:last-child)::after {
+    right: -5px;
+    top: 2px;
+    height: 78px;
+  }
+}
+
+/* Mais contraste e nitidez no contador */
+.count-section {
+  background: #071a35;
+}
+
+.count-art {
+  opacity: 0.82;
+  filter: brightness(0.62) contrast(1.08) saturate(0.95);
+}
+
+.count-section h2,
+.time-card strong {
+  color: #ffffff;
+  text-shadow:
+    0 2px 5px rgba(0, 0, 0, 0.85),
+    0 0 16px rgba(0, 0, 0, 0.32);
+}
+
+.time-card span {
+  color: #ffffff;
+  opacity: 1;
+  font-size: 15px;
+  font-weight: 500;
+  text-shadow:
+    0 2px 4px rgba(0, 0, 0, 0.95),
+    0 0 8px rgba(0, 0, 0, 0.5);
+}
+
+.count-section .section-kicker {
+  opacity: 1;
+  text-shadow: 0 2px 5px rgba(0, 0, 0, 0.8);
+}
+
+/* Mantém a arte irregular, sem bloco de fundo */
+.count-section {
+  background: transparent !important;
+}
+
+.count-art {
+  opacity: 0.88;
+  filter: brightness(0.72) contrast(1.1) saturate(0.98);
+}
+
+/* Texto mais nítido sem criar fundo */
+.count-section h2,
+.time-card strong,
+.time-card span,
+.count-section .section-kicker {
+  opacity: 1;
+  text-shadow:
+    0 2px 4px rgba(0, 0, 0, 0.95),
+    0 0 12px rgba(0, 0, 0, 0.35);
+}
+
+.time-card span {
+  color: #fff;
+  font-weight: 500;
+}
+
+.gifts {
+  background:
+    linear-gradient(rgba(4, 18, 40, 0.68), rgba(4, 18, 40, 0.68)),
+    url("/heroDesktop.png") center / cover fixed;
+}
+
+.gifts-card {
+  background: rgba(6, 22, 48, 0.58);
+  backdrop-filter: blur(2px);
 }

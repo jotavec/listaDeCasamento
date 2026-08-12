@@ -1,0 +1,61 @@
+.nav {
+  display: grid;
+  gap: 7px;
+}
+
+.item {
+  height: 48px;
+  padding: 0 14px;
+  display: flex;
+  align-items: center;
+  gap: 13px;
+  border-radius: 12px;
+  color: rgba(255, 255, 255, 0.56);
+  text-decoration: none;
+  transition:
+    background 150ms ease,
+    color 150ms ease;
+}
+
+.item:hover {
+  background: rgba(255, 255, 255, 0.06);
+  color: white;
+}
+
+.active {
+  background: rgba(213, 178, 106, 0.14);
+  color: #efd59b;
+}
+
+.icon {
+  width: 20px;
+  height: 20px;
+  flex: 0 0 20px;
+}
+
+.icon svg {
+  width: 20px;
+  height: 20px;
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 1.7;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+.label {
+  font-size: 12px;
+  font-weight: 500;
+}
+
+@media (max-width: 920px) {
+  .label {
+    display: none;
+  }
+
+  .item {
+    width: 48px;
+    padding: 0;
+    justify-content: center;
+  }
+}

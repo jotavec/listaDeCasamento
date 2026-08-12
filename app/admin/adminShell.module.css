@@ -1,0 +1,61 @@
+.shell {
+  min-height: 100svh;
+  background: #f6f2e9;
+  color: #132744;
+}
+
+.header {
+  height: 88px;
+  padding: 0 clamp(24px, 5vw, 72px);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border-bottom: 1px solid rgba(19, 39, 68, 0.12);
+  background: #071d3b;
+  color: white;
+}
+
+.brand {
+  color: #ddb86b;
+  text-decoration: none;
+  font-family: var(--fontCormorant), Georgia, serif;
+  font-size: 31px;
+}
+
+.headerRight {
+  display: flex;
+  align-items: center;
+  gap: 34px;
+}
+
+.nav a {
+  color: rgba(255, 255, 255, 0.82);
+  text-decoration: none;
+  font-family: var(--fontMontserrat), sans-serif;
+  font-size: 11px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.logout {
+  border: 0;
+  background: transparent;
+  color: rgba(255, 255, 255, 0.58);
+  cursor: pointer;
+  font-size: 12px;
+}
+
+@media (max-width: 640px) {
+  .header {
+    height: 74px;
+    padding: 0 18px;
+  }
+
+  .nav {
+    display: none;
+  }
+
+  .headerRight {
+    gap: 14px;
+  }
+}

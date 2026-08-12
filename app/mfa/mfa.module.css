@@ -1,0 +1,163 @@
+.page {
+  min-height: 100svh;
+  display: grid;
+  place-items: center;
+  padding: 32px 20px;
+  color: white;
+  background:
+    linear-gradient(rgba(3, 14, 32, 0.78), rgba(3, 14, 32, 0.9)),
+    url("/heroDesktop.png") center / cover fixed;
+}
+
+.card {
+  width: min(520px, 100%);
+  padding: 48px;
+  text-align: center;
+  border: 1px solid rgba(202, 168, 106, 0.58);
+  background: rgba(5, 20, 44, 0.84);
+  backdrop-filter: blur(12px);
+  box-shadow: 0 28px 80px rgba(0, 0, 0, 0.4);
+}
+
+.monogram {
+  margin-bottom: 24px;
+  color: #dfbf7b;
+  font-family: var(--fontCormorant), Georgia, serif;
+  font-size: 30px;
+}
+
+.kicker {
+  color: #d8b56a;
+  font-family: var(--fontMontserrat), sans-serif;
+  font-size: 10px;
+  letter-spacing: 0.34em;
+}
+
+.card h1 {
+  margin: 10px 0 16px;
+  font-family: var(--fontCormorant), Georgia, serif;
+  font-size: 46px;
+  font-weight: 500;
+}
+
+.card > p {
+  color: rgba(255, 255, 255, 0.76);
+  font-family: var(--fontCormorant), Georgia, serif;
+  font-size: 19px;
+  line-height: 1.55;
+}
+
+.qrWrap {
+  width: 220px;
+  height: 220px;
+  margin: 28px auto 20px;
+  display: grid;
+  place-items: center;
+  padding: 12px;
+  background: white;
+}
+
+.qr {
+  width: 100%;
+  height: 100%;
+}
+
+.manual {
+  margin: 18px 0;
+  color: rgba(255, 255, 255, 0.7);
+  font-size: 12px;
+}
+
+.manual summary {
+  cursor: pointer;
+  color: #dfc287;
+}
+
+.manual code {
+  display: block;
+  margin-top: 10px;
+  padding: 12px;
+  word-break: break-all;
+  color: white;
+  background: rgba(255, 255, 255, 0.07);
+}
+
+.verify {
+  display: grid;
+  gap: 12px;
+  margin-top: 28px;
+}
+
+.verify label {
+  color: #dec58f;
+  font-family: var(--fontMontserrat), sans-serif;
+  font-size: 10px;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+
+.verify input {
+  width: 210px;
+  height: 58px;
+  margin: auto;
+  text-align: center;
+  color: white;
+  border: 1px solid rgba(218, 190, 132, 0.5);
+  outline: none;
+  background: rgba(255, 255, 255, 0.06);
+  font-family: var(--fontCormorant), Georgia, serif;
+  font-size: 32px;
+  letter-spacing: 0.22em;
+}
+
+.verify input:focus {
+  border-color: #d8b56a;
+}
+
+.verify button {
+  height: 48px;
+  margin-top: 6px;
+  border: 1px solid #cda95f;
+  background: #cda95f;
+  color: #071a35;
+  cursor: pointer;
+  font-family: var(--fontMontserrat), sans-serif;
+  font-size: 10px;
+  font-weight: 600;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+}
+
+.verify button:disabled {
+  opacity: 0.6;
+  cursor: wait;
+}
+
+.error {
+  margin-top: 20px;
+  padding: 12px;
+  border: 1px solid rgba(255, 156, 156, 0.35);
+  background: rgba(92, 14, 20, 0.35);
+  color: #ffd8d8;
+  font-size: 13px;
+}
+
+.logout {
+  margin-top: 26px;
+  border: 0;
+  background: transparent;
+  color: rgba(255, 255, 255, 0.48);
+  cursor: pointer;
+  font-size: 11px;
+  text-decoration: underline;
+}
+
+@media (max-width: 600px) {
+  .card {
+    padding: 38px 24px;
+  }
+
+  .card h1 {
+    font-size: 39px;
+  }
+}

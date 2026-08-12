@@ -6,7 +6,8 @@ export function HeroSection() {
         <p className="eyebrow">Nosso para sempre começa aqui</p>
         <h1>
           <span>Jéssica</span>
-          <span>& João Vítor</span>
+          <span className="nameSeparator">&amp;</span>
+          <span>João Vítor</span>
         </h1>
         <div className="gold-line" aria-hidden="true" />
       </div>
