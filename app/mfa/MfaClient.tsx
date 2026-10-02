@@ -7,7 +7,7 @@ import styles from "./mfa.module.css";
 
 type Mode = "loading" | "enroll" | "challenge";
 
-export function MfaClient() {
+export function MfaClient({ destination = "/admin" }: { destination?: "/admin" | "/redefinir-senha" }) {
   const router = useRouter();
   const [mode, setMode] = useState<Mode>("loading");
   const [factorId, setFactorId] = useState("");
@@ -32,7 +32,7 @@ export function MfaClient() {
       }
 
       if (aal?.currentLevel === "aal2") {
-        router.replace("/admin");
+        router.replace(destination);
         return;
       }
 
@@ -80,7 +80,7 @@ export function MfaClient() {
     return () => {
       cancelled = true;
     };
-  }, [router]);
+  }, [router, destination]);
 
   async function verify() {
     const cleanCode = code.replace(/\D/g, "");
@@ -116,7 +116,7 @@ export function MfaClient() {
       return;
     }
 
-    router.replace("/admin");
+    router.replace(destination);
     router.refresh();
   }
 

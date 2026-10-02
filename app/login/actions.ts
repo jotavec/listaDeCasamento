@@ -27,7 +27,9 @@ export async function login(formData: FormData) {
   });
 
   if (error) {
-    redirect("/login?erro=credenciais");
+    redirect(error.code === "invalid_credentials" || error.code === "invalid_login_credentials"
+      ? "/login?erro=credenciais"
+      : "/login?erro=indisponivel");
   }
 
   const { data: authorized, error: authorizationError } =

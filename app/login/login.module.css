@@ -126,6 +126,28 @@
   letter-spacing: 0.08em;
 }
 
+.recoveryLink {
+  display: inline-block;
+  margin-top: 24px;
+  color: #dec58f;
+  font-size: 14px;
+  text-underline-offset: 4px;
+}
+
+.success {
+  padding: 12px 14px;
+  border: 1px solid rgba(151, 210, 173, 0.45);
+  background: rgba(23, 72, 53, 0.4);
+  color: #dcf6e5;
+  font-size: 14px;
+  line-height: 1.6;
+}
+
+.form button:disabled {
+  cursor: wait;
+  opacity: 0.65;
+}
+
 @media (max-width: 600px) {
   .card {
     padding: 44px 26px 38px;

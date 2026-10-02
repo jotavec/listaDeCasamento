@@ -1,15 +1,18 @@
 import { login } from "./actions";
+import Link from "next/link";
 import styles from "./login.module.css";
 
 type Props = {
   searchParams: Promise<{
     erro?: string;
+    sucesso?: string;
   }>;
 };
 
 const messages: Record<string, string> = {
   credenciais: "E-mail ou senha inválidos.",
   naoautorizado: "Esta conta não possui autorização para acessar a área administrativa.",
+  indisponivel: "Não foi possível acessar o serviço de login. Aguarde um instante e tente novamente.",
 };
 
 export default async function LoginPage({ searchParams }: Props) {
@@ -18,9 +21,9 @@ export default async function LoginPage({ searchParams }: Props) {
 
   return (
     <main className={styles.page}>
-      <a href="/" className={styles.back}>
+      <Link href="/" className={styles.back}>
         ← Voltar ao site
-      </a>
+      </Link>
 
       <section className={styles.card}>
         <div className={styles.monogram}>J & J</div>
@@ -36,6 +39,10 @@ export default async function LoginPage({ searchParams }: Props) {
           <div className={styles.error} role="alert">
             {message}
           </div>
+        )}
+
+        {params.sucesso === "senha" && (
+          <p className={styles.success} role="status">Senha atualizada. Entre com sua nova senha.</p>
         )}
 
         <form action={login} className={styles.form}>
@@ -60,6 +67,8 @@ export default async function LoginPage({ searchParams }: Props) {
 
           <button type="submit">Entrar</button>
         </form>
+
+        <Link href="/recuperar-senha" className={styles.recoveryLink}>Esqueci minha senha</Link>
 
         <p className={styles.security}>
           Login protegido por autenticação em duas etapas.
