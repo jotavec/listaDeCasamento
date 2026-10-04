@@ -1,5 +1,6 @@
 "use client";
 
+import { Monogram } from "@/components/Monogram";
 import { useEffect, useState } from "react";
 import { createInvitation } from "@/app/admin/convidados/actions";
 import { SubmitButton } from "@/components/auth/SubmitButton";
@@ -75,7 +76,7 @@ export function GuestCreateModal() {
 
             <div className={styles.intro}>
               <div className={styles.monogram}>
-                J & J
+                <Monogram width={96} />
               </div>
 
               <div>

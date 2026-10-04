@@ -45,16 +45,10 @@
 }
 
 .seal {
-  width: 58px;
-  height: 58px;
+  width: 140px;
   margin-bottom: 18px;
   display: grid;
   place-items: center;
-  border: 1px solid #caa86a;
-  border-radius: 50%;
-  color: #9a7740;
-  font-family: "Cormorant Garamond", serif;
-  font-size: 18px;
 }
 
 .modalHeader p,
@@ -792,4 +786,3 @@
 .resultName small {
   display: none !important;
 }
-

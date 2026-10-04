@@ -2,6 +2,7 @@ import type { ReactNode } from "react";
 import Link from "next/link";
 import { requireAdmin } from "@/lib/auth/requireAdmin";
 import { AdminNav } from "@/components/admin/AdminNav";
+import { Monogram } from "@/components/Monogram";
 import styles from "./adminLayout.module.css";
 
 export default async function AdminLayout({
@@ -14,10 +15,8 @@ export default async function AdminLayout({
   return (
     <div className={styles.app}>
       <aside className={styles.sidebar}>
-        <Link href="/" className={styles.brand}>
-          <span>J</span>
-          <i>&</i>
-          <span>J</span>
+        <Link href="/" className={styles.brand} aria-label="Voltar ao site do casamento">
+          <Monogram width={145} priority />
         </Link>
 
         <AdminNav />

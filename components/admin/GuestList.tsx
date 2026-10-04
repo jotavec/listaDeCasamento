@@ -1,5 +1,6 @@
 "use client";
 
+import { Monogram } from "@/components/Monogram";
 import { useSearchParams } from "next/navigation";
 import type { FormEvent, MouseEvent, ComponentProps } from "react";
 import { SubmitButton } from "@/components/auth/SubmitButton";
@@ -205,7 +206,7 @@ export function GuestList({ invitations, error }: { invitations: Invitation[]; e
           </div>
         ) : filtered.length === 0 ? (
           <div className={styles.empty}>
-            <div>J&J</div>
+            <div className={styles.emptyMonogram}><Monogram width={140} /></div>
 
             <strong>
               Nenhum convidado por aqui.

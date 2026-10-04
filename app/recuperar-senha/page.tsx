@@ -1,3 +1,4 @@
+import { Monogram } from "@/components/Monogram";
 import { requestPasswordReset } from "./actions";
 import Link from "next/link";
 import { Suspense } from "react";
@@ -19,7 +20,7 @@ export default function RecoverPasswordPage() {
       <AuthBackground />
       <Link href="/login" className={styles.back}>← Voltar ao login</Link>
       <section className={styles.card}>
-        <div className={styles.monogram}>J & J</div>
+        <div className={styles.monogram}><Monogram width={150} priority /></div>
         <p className={styles.kicker}>RECUPERAR ACESSO</p>
         <h1>Esqueceu a senha?</h1>
         <p className={styles.description}>Receba um link para escolher uma nova senha.</p>

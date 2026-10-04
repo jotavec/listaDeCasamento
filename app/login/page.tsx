@@ -1,3 +1,4 @@
+import { Monogram } from "@/components/Monogram";
 import { login } from "./actions";
 import Link from "next/link";
 import { Suspense } from "react";
@@ -15,7 +16,7 @@ export default function LoginPage() {
       </Link>
 
       <section className={styles.card}>
-        <div className={styles.monogram}>J & J</div>
+        <div className={styles.monogram}><Monogram width={150} priority /></div>
 
         <p className={styles.kicker}>ÁREA RESTRITA</p>
         <h1>Administração</h1>

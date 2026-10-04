@@ -1,3 +1,4 @@
+import { Monogram } from "@/components/Monogram";
 import Link from "next/link";
 import { AuthBackground } from "@/components/auth/AuthBackground";
 import { requirePasswordSession } from "@/lib/auth/passwordSession";
@@ -22,7 +23,7 @@ export default async function ResetPasswordPage({ searchParams }: {
     <main className={styles.page}>
       <AuthBackground />
       <section className={styles.card}>
-        <div className={styles.monogram}>J & J</div>
+        <div className={styles.monogram}><Monogram width={150} priority /></div>
         <p className={styles.kicker}>RECUPERAR ACESSO</p>
         <h1>Nova senha</h1>
         <p className={styles.description}>Escolha uma senha com pelo menos 8 caracteres.</p>

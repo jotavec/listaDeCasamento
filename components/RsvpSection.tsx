@@ -1,5 +1,6 @@
 "use client";
 
+import { Monogram } from "@/components/Monogram";
 import { useEffect, useState } from "react";
 import { RsvpGuestSearch } from "./RsvpGuestSearch";
 import styles from "./RsvpModal.module.css";
@@ -259,7 +260,7 @@ export function RsvpSection() {
         </button>
 
         <div className="final-monogram">
-          J & J
+          <Monogram width={210} />
         </div>
 
         <p className="final-date">
@@ -295,7 +296,7 @@ export function RsvpSection() {
               <>
                 <div className={styles.modalHeader}>
                   <div className={styles.seal}>
-                    J & J
+                    <Monogram width={140} />
                   </div>
 
                   <p>CONFIRMAÇÃO DE PRESENÇA</p>
@@ -327,7 +328,7 @@ export function RsvpSection() {
               <>
                 <div className={styles.modalHeader}>
                   <div className={styles.seal}>
-                    J & J
+                    <Monogram width={140} />
                   </div>
 
                   <p>CONVITE ENCONTRADO</p>
@@ -650,7 +651,7 @@ export function RsvpSection() {
             {finished && (
               <div className={styles.finished}>
                 <div className={styles.seal}>
-                  J & J
+                  <Monogram width={140} />
                 </div>
 
                 <p>RESPOSTA REGISTRADA</p>

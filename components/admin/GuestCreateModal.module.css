@@ -104,16 +104,10 @@
 }
 
 .monogram {
-  width: 48px;
-  height: 48px;
-  flex: 0 0 48px;
+  width: 96px;
+  flex: 0 0 96px;
   display: grid;
   place-items: center;
-  border-radius: 13px;
-  background: #0d315a;
-  color: #dfbd78;
-  font-family: var(--fontCormorant), Georgia, serif;
-  font-size: 18px;
 }
 
 .intro > div:last-child {

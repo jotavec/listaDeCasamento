@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 import Link from "next/link";
+import { Monogram } from "./Monogram";
 
 const navigation = [
   { href: "#historia", label: "Nossa história" },
@@ -16,7 +17,7 @@ export function SiteHeader() {
   return (
     <header className="nav-wrap">
       <Link className="monogram" href="/login" aria-label="Acessar área administrativa">
-        J & J
+        <Monogram width={120} priority />
       </Link>
 
       <button

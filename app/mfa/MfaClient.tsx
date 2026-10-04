@@ -1,5 +1,6 @@
 "use client";
 
+import { Monogram } from "@/components/Monogram";
 import { useEffect, useState } from "react";
 import { useRouter } from "next/navigation";
 import { createClient } from "@/lib/supabase/client";
@@ -125,7 +126,7 @@ export function MfaClient({ destination = "/admin" }: { destination?: "/admin" |
     <main className={styles.page}>
       <AuthBackground />
       <section className={styles.card}>
-        <div className={styles.monogram}>J & J</div>
+        <div className={styles.monogram}><Monogram width={150} priority /></div>
         <p className={styles.kicker}>SEGURANÇA</p>
 
         {mode === "loading" && (

@@ -351,6 +351,13 @@
   font-size: 23px;
 }
 
+.empty > .emptyMonogram {
+  width: 140px;
+  height: auto;
+  border-radius: 0;
+  background: transparent;
+}
+
 .empty span {
   max-width: 330px;
   margin-top: 5px;
