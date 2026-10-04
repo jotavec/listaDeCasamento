@@ -9,7 +9,7 @@ Site de Jéssica e João Vítor, desenvolvido com Next.js, React e TypeScript.
 | GitHub | Código, histórico e revisão | `jotavec/listaDeCasamento`, branch `main` |
 | Vercel | Aplicação Next.js, HTTPS e publicação a cada commit | Projeto `lista-de-casamento` |
 | Supabase | Autenticação, MFA, banco e permissões | Projeto `listaDeCasamento` |
-| Hostinger | Domínio e DNS apontando para a Vercel | Domínio e acesso ao DNS ainda pendentes |
+| Hostinger | Domínio e DNS apontando para a Vercel | `zavita.online` vinculado ao projeto; apontamento DNS pendente |
 
 Página pública: https://lista-de-casamento-smoky.vercel.app/casamento
 
