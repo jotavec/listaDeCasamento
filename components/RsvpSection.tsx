@@ -260,7 +260,7 @@ export function RsvpSection() {
         </button>
 
         <div className="final-monogram">
-          <Monogram width={210} />
+          <Monogram width={210} tone="color" />
         </div>
 
         <p className="final-date">
@@ -296,7 +296,7 @@ export function RsvpSection() {
               <>
                 <div className={styles.modalHeader}>
                   <div className={styles.seal}>
-                    <Monogram width={140} />
+                    <Monogram width={140} tone="black" />
                   </div>
 
                   <p>CONFIRMAÇÃO DE PRESENÇA</p>
@@ -328,7 +328,7 @@ export function RsvpSection() {
               <>
                 <div className={styles.modalHeader}>
                   <div className={styles.seal}>
-                    <Monogram width={140} />
+                    <Monogram width={140} tone="black" />
                   </div>
 
                   <p>CONVITE ENCONTRADO</p>
@@ -651,7 +651,7 @@ export function RsvpSection() {
             {finished && (
               <div className={styles.finished}>
                 <div className={styles.seal}>
-                  <Monogram width={140} />
+                  <Monogram width={140} tone="black" />
                 </div>
 
                 <p>RESPOSTA REGISTRADA</p>

@@ -206,7 +206,7 @@ export function GuestList({ invitations, error }: { invitations: Invitation[]; e
           </div>
         ) : filtered.length === 0 ? (
           <div className={styles.empty}>
-            <div className={styles.emptyMonogram}><Monogram width={140} /></div>
+            <div className={styles.emptyMonogram}><Monogram width={140} tone="black" /></div>
 
             <strong>
               Nenhum convidado por aqui.

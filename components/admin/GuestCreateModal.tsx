@@ -76,7 +76,7 @@ export function GuestCreateModal() {
 
             <div className={styles.intro}>
               <div className={styles.monogram}>
-                <Monogram width={96} />
+                <Monogram width={96} tone="black" />
               </div>
 
               <div>
