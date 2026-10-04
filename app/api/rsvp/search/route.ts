@@ -1,42 +1,13 @@
 import { NextResponse } from "next/server";
-import { createClient } from "@supabase/supabase-js";
-
-function publicClient() {
-  return createClient(
-    process.env.NEXT_PUBLIC_SUPABASE_URL!,
-    process.env.NEXT_PUBLIC_SUPABASE_PUBLISHABLE_KEY!,
-    {
-      auth: {
-        persistSession: false,
-        autoRefreshToken: false,
-      },
-    },
-  );
-}
+import { publicClient } from "@/lib/supabase/public";
+import { readJsonObject } from "@/lib/http/request";
 
 export async function POST(request: Request) {
-  const contentType =
-    request.headers.get("content-type") ?? "";
+  const parsed = await readJsonObject(request);
+  if (parsed.response) return parsed.response;
+  const body = parsed.data;
 
-  if (!contentType.includes("application/json")) {
-    return NextResponse.json(
-      { error: "Requisição inválida." },
-      { status: 415 },
-    );
-  }
-
-  let body: { name?: unknown };
-
-  try {
-    body = await request.json();
-  } catch {
-    return NextResponse.json(
-      { error: "Requisição inválida." },
-      { status: 400 },
-    );
-  }
-
-  const name = String(body.name ?? "")
+  const name = (typeof body.name === "string" ? body.name : "")
     .trim()
     .replace(/\s+/g, " ");
 

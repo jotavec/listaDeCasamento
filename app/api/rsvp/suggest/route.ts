@@ -1,32 +1,13 @@
 import { NextResponse } from "next/server";
-import { createClient } from "@supabase/supabase-js";
-
-function publicClient() {
-  return createClient(
-    process.env.NEXT_PUBLIC_SUPABASE_URL!,
-    process.env.NEXT_PUBLIC_SUPABASE_PUBLISHABLE_KEY!,
-    {
-      auth: {
-        persistSession: false,
-        autoRefreshToken: false,
-      },
-    },
-  );
-}
+import { publicClient } from "@/lib/supabase/public";
+import { readJsonObject } from "@/lib/http/request";
 
 export async function POST(request: Request) {
-  let body: { query?: unknown };
+  const parsed = await readJsonObject(request);
+  if (parsed.response) return parsed.response;
+  const body = parsed.data;
 
-  try {
-    body = await request.json();
-  } catch {
-    return NextResponse.json(
-      { results: [] },
-      { status: 400 },
-    );
-  }
-
-  const query = String(body.query ?? "")
+  const query = (typeof body.query === "string" ? body.query : "")
     .trim()
     .replace(/\s+/g, " ");
 

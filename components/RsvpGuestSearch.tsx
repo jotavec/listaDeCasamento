@@ -2,7 +2,6 @@
 
 import {
   useEffect,
-  useRef,
   useState,
 } from "react";
 
@@ -21,85 +20,51 @@ export function RsvpGuestSearch({
   onChange,
   onSelect,
 }: Props) {
-  const [results, setResults] =
-    useState<string[]>([]);
-
-  const [searching, setSearching] =
-    useState(false);
-
-  const [searched, setSearched] =
-    useState(false);
-
-  const requestRef = useRef(0);
+  const query = value.trim();
+  const [search, setSearch] = useState<{
+    query: string;
+    results: string[];
+    status: "loading" | "done" | "error";
+  } | null>(null);
+  const current = query.length >= 3 && search?.query === query ? search : null;
+  const results = current?.results ?? [];
+  const searching = query.length >= 3 && (!current || current.status === "loading");
+  const searched = current?.status === "done";
 
   useEffect(() => {
-    const query = value.trim();
-
-    if (query.length < 3) {
-      setResults([]);
-      setSearching(false);
-      setSearched(false);
-      return;
-    }
-
-    const requestId = ++requestRef.current;
-
-    const timeout = window.setTimeout(
-      async () => {
-        setSearching(true);
-
-        try {
-          const response = await fetch(
-            "/api/rsvp/suggest",
-            {
-              method: "POST",
-              headers: {
-                "Content-Type":
-                  "application/json",
-              },
-              body: JSON.stringify({
-                query,
-              }),
-            },
-          );
-
-          const data = await response.json();
-
-          if (
-            requestId !== requestRef.current
-          ) {
-            return;
-          }
-
-          setResults(
-            Array.isArray(data.results)
-              ? data.results
+    if (query.length < 3 || query.length > 120) return;
+    const controller = new AbortController();
+    let active = true;
+    const timeout = window.setTimeout(async () => {
+      setSearch({ query, results: [], status: "loading" });
+      try {
+        const response = await fetch("/api/rsvp/suggest", {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({ query }),
+          signal: controller.signal,
+        });
+        if (!response.ok) throw new Error("Busca indisponível");
+        const data = await response.json();
+        if (active) {
+          setSearch({
+            query,
+            results: Array.isArray(data.results)
+              ? data.results.filter((name: unknown): name is string => typeof name === "string")
               : [],
-          );
-
-          setSearched(true);
-        } catch {
-          if (
-            requestId === requestRef.current
-          ) {
-            setResults([]);
-            setSearched(true);
-          }
-        } finally {
-          if (
-            requestId === requestRef.current
-          ) {
-            setSearching(false);
-          }
+            status: "done",
+          });
         }
-      },
-      250,
-    );
-
+      } catch {
+        if (active) setSearch({ query, results: [], status: "error" });
+      }
+    }, 250);
     return () => {
+      active = false;
       window.clearTimeout(timeout);
+      controller.abort();
     };
-  }, [value]);
+  }, [query]);
 
   return (
     <div className={styles.searchArea}>
@@ -120,6 +85,7 @@ export function RsvpGuestSearch({
             onChange(event.target.value)
           }
           placeholder="Comece a digitar seu nome..."
+          maxLength={120}
           autoComplete="off"
           autoFocus
         />
@@ -139,6 +105,12 @@ export function RsvpGuestSearch({
               className={styles.searchStatus}
             >
               Procurando na lista...
+            </div>
+          )}
+
+          {current?.status === "error" && (
+            <div className={styles.searchStatus} role="status">
+              Não foi possível consultar a lista agora. Tente novamente.
             </div>
           )}
 

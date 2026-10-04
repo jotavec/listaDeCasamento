@@ -1,34 +1,11 @@
 import { NextResponse } from "next/server";
-import { createClient } from "@supabase/supabase-js";
-
-function publicClient() {
-  return createClient(
-    process.env.NEXT_PUBLIC_SUPABASE_URL!,
-    process.env.NEXT_PUBLIC_SUPABASE_PUBLISHABLE_KEY!,
-    {
-      auth: {
-        persistSession: false,
-        autoRefreshToken: false,
-      },
-    },
-  );
-}
-
-type Child = {
-  name?: unknown;
-  age?: unknown;
-};
+import { publicClient } from "@/lib/supabase/public";
+import { readJsonObject } from "@/lib/http/request";
 
 export async function POST(request: Request) {
-  const contentType =
-    request.headers.get("content-type") ?? "";
-
-  if (!contentType.includes("application/json")) {
-    return NextResponse.json(
-      { error: "Requisição inválida." },
-      { status: 415 },
-    );
-  }
+  const parsed = await readJsonObject(request);
+  if (parsed.response) return parsed.response;
+  const body = parsed.data;
 
   const session = request.headers
     .get("cookie")
@@ -47,34 +24,25 @@ export async function POST(request: Request) {
     );
   }
 
-  const [invitationId, token] =
-    decodeURIComponent(session).split(".");
+  let credentials: string[];
+  try {
+    credentials = decodeURIComponent(session).split(".");
+  } catch {
+    return NextResponse.json({ error: "Sessão inválida." }, { status: 401 });
+  }
+  const [invitationId, token] = credentials;
 
   const uuid =
     /^[0-9a-f]{8}-[0-9a-f]{4}-[1-5][0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12}$/i;
 
   if (
+    credentials.length !== 2 ||
     !uuid.test(invitationId ?? "") ||
     !uuid.test(token ?? "")
   ) {
     return NextResponse.json(
       { error: "Sessão inválida." },
       { status: 401 },
-    );
-  }
-
-  let body: {
-    attending?: unknown;
-    companions?: unknown;
-    children?: unknown;
-  };
-
-  try {
-    body = await request.json();
-  } catch {
-    return NextResponse.json(
-      { error: "Dados inválidos." },
-      { status: 400 },
     );
   }
 
@@ -85,64 +53,27 @@ export async function POST(request: Request) {
     );
   }
 
-  const rawCompanions = Array.isArray(body.companions)
-    ? body.companions
-    : [];
-
-  const companions = rawCompanions
-    .map((value) => String(value ?? "").trim())
-    .filter(Boolean);
-
-  if (companions.length > 20) {
-    return NextResponse.json(
-      { error: "Quantidade inválida." },
-      { status: 400 },
-    );
+  if (!Array.isArray(body.companions) || !Array.isArray(body.children)
+    || body.companions.length > 20 || body.children.length > 50) {
+    return NextResponse.json({ error: "Quantidade inválida." }, { status: 400 });
   }
 
-  const rawChildren = Array.isArray(body.children)
-    ? (body.children as Child[])
-    : [];
-
-  const children = rawChildren.map((child) => ({
-    name: String(child?.name ?? "").trim(),
-    age: Number(child?.age),
-  }));
-
-  if (
-    companions.some(
-      (name) =>
-        name.length < 2 ||
-        name.length > 120,
-    )
-  ) {
-    return NextResponse.json(
-      {
-        error:
-          "Informe o nome completo dos acompanhantes.",
-      },
-      { status: 400 },
-    );
+  if (body.companions.some((name: unknown) => typeof name !== "string"
+    || name.trim().length < 2 || name.trim().length > 120)) {
+    return NextResponse.json({ error: "Informe o nome completo dos acompanhantes." }, { status: 400 });
   }
+  const companions = (body.companions as string[]).map((name) => name.trim());
 
-  if (
-    children.some(
-      (child) =>
-        child.name.length < 2 ||
-        child.name.length > 120 ||
-        !Number.isInteger(child.age) ||
-        child.age < 0 ||
-        child.age > 10,
-    )
-  ) {
-    return NextResponse.json(
-      {
-        error:
-          "Confira o nome e a idade das crianças.",
-      },
-      { status: 400 },
-    );
+  if (body.children.some((child: unknown) => {
+    if (!child || typeof child !== "object" || Array.isArray(child)) return true;
+    const { name, age } = child as Record<string, unknown>;
+    return typeof name !== "string" || name.trim().length < 2 || name.trim().length > 120
+      || typeof age !== "number" || !Number.isInteger(age) || age < 0 || age > 10;
+  })) {
+    return NextResponse.json({ error: "Confira o nome e a idade das crianças." }, { status: 400 });
   }
+  const children = (body.children as { name: string; age: number }[])
+    .map(({ name, age }) => ({ name: name.trim(), age }));
 
   if (
     !body.attending &&

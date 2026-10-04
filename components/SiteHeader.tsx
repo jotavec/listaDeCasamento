@@ -1,7 +1,6 @@
 "use client";
 
 import { useState } from "react";
-import Link from "next/link";
 import { Monogram } from "./Monogram";
 
 const navigation = [
@@ -16,9 +15,9 @@ export function SiteHeader() {
 
   return (
     <header className="nav-wrap">
-      <Link className="monogram" href="/login" aria-label="Acessar área administrativa">
+      <a className="monogram" href="#inicio" aria-label="Voltar ao início" onClick={closeMenu}>
         <Monogram width={120} priority />
-      </Link>
+      </a>
 
       <button
         className="menu-button"

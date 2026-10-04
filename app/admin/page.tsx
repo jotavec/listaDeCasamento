@@ -1,8 +1,10 @@
 import Link from "next/link";
 import { createClient } from "@/lib/supabase/server";
+import { requireAdmin } from "@/lib/auth/requireAdmin";
 import styles from "./dashboard.module.css";
 
 export default async function AdminDashboard() {
+  await requireAdmin();
   const supabase = await createClient();
 
   const { data: invitations } = await supabase
