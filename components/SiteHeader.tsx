@@ -1,6 +1,7 @@
 "use client";
 
 import { useState } from "react";
+import Link from "next/link";
 
 const navigation = [
   { href: "#historia", label: "Nossa história" },
@@ -14,9 +15,9 @@ export function SiteHeader() {
 
   return (
     <header className="nav-wrap">
-      <a className="monogram" href="/login" aria-label="Acessar área administrativa">
+      <Link className="monogram" href="/login" aria-label="Acessar área administrativa">
         J & J
-      </a>
+      </Link>
 
       <button
         className="menu-button"

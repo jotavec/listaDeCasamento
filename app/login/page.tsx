@@ -1,26 +1,15 @@
 import { login } from "./actions";
 import Link from "next/link";
+import { Suspense } from "react";
+import { LoginMessages } from "@/components/auth/LoginMessages";
+import { SubmitButton } from "@/components/auth/SubmitButton";
+import { AuthBackground } from "@/components/auth/AuthBackground";
 import styles from "./login.module.css";
 
-type Props = {
-  searchParams: Promise<{
-    erro?: string;
-    sucesso?: string;
-  }>;
-};
-
-const messages: Record<string, string> = {
-  credenciais: "E-mail ou senha inválidos.",
-  naoautorizado: "Esta conta não possui autorização para acessar a área administrativa.",
-  indisponivel: "Não foi possível acessar o serviço de login. Aguarde um instante e tente novamente.",
-};
-
-export default async function LoginPage({ searchParams }: Props) {
-  const params = await searchParams;
-  const message = params.erro ? messages[params.erro] : null;
-
+export default function LoginPage() {
   return (
     <main className={styles.page}>
+      <AuthBackground />
       <Link href="/" className={styles.back}>
         ← Voltar ao site
       </Link>
@@ -35,15 +24,7 @@ export default async function LoginPage({ searchParams }: Props) {
           Acesso exclusivo aos administradores.
         </p>
 
-        {message && (
-          <div className={styles.error} role="alert">
-            {message}
-          </div>
-        )}
-
-        {params.sucesso === "senha" && (
-          <p className={styles.success} role="status">Senha atualizada. Entre com sua nova senha.</p>
-        )}
+        <Suspense fallback={null}><LoginMessages /></Suspense>
 
         <form action={login} className={styles.form}>
           <label htmlFor="email">E-mail</label>
@@ -65,7 +46,7 @@ export default async function LoginPage({ searchParams }: Props) {
             required
           />
 
-          <button type="submit">Entrar</button>
+          <SubmitButton pendingText="Entrando...">Entrar</SubmitButton>
         </form>
 
         <Link href="/recuperar-senha" className={styles.recoveryLink}>Esqueci minha senha</Link>

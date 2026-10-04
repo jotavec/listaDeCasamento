@@ -5,9 +5,8 @@
   place-items: center;
   padding: 32px 20px;
   color: white;
-  background:
-    linear-gradient(rgba(3, 14, 32, 0.76), rgba(3, 14, 32, 0.86)),
-    url("/heroDesktop.png") center / cover fixed;
+  isolation: isolate;
+  background: #071a35;
 }
 
 .back {

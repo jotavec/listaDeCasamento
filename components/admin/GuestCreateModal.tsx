@@ -2,6 +2,7 @@
 
 import { useEffect, useState } from "react";
 import { createInvitation } from "@/app/admin/convidados/actions";
+import { SubmitButton } from "@/components/auth/SubmitButton";
 import styles from "./GuestCreateModal.module.css";
 
 export function GuestCreateModal() {
@@ -179,12 +180,12 @@ export function GuestCreateModal() {
                   Cancelar
                 </button>
 
-                <button
-                  type="submit"
+                <SubmitButton
+                  pendingText="Adicionando..."
                   className={styles.save}
                 >
                   Adicionar à lista
-                </button>
+                </SubmitButton>
               </footer>
             </form>
           </section>

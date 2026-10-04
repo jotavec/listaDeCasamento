@@ -4,6 +4,7 @@
 }
 
 .item {
+  position: relative;
   height: 48px;
   padding: 0 14px;
   display: flex;
@@ -46,6 +47,15 @@
 .label {
   font-size: 12px;
   font-weight: 500;
+}
+
+.pending {
+  position: absolute;
+  right: 5px;
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: #efd59b;
 }
 
 @media (max-width: 920px) {

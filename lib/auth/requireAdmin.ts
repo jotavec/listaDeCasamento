@@ -1,11 +1,8 @@
 import { redirect } from "next/navigation";
 import { createClient } from "@/lib/supabase/server";
+import { cache } from "react";
 
-export async function requireAdmin(
-  options: { requireMfa?: boolean } = {},
-) {
-  const { requireMfa = true } = options;
-
+const checkAdmin = cache(async (requireMfa: boolean) => {
   const supabase = await createClient();
 
   const { data: claimsData, error: claimsError } =
@@ -32,4 +29,8 @@ export async function requireAdmin(
   }
 
   return claimsData.claims;
+});
+
+export function requireAdmin(options: { requireMfa?: boolean } = {}) {
+  return checkAdmin(options.requireMfa ?? true);
 }

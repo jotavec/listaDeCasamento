@@ -4,9 +4,9 @@
   place-items: center;
   padding: 32px 20px;
   color: white;
-  background:
-    linear-gradient(rgba(3, 14, 32, 0.78), rgba(3, 14, 32, 0.9)),
-    url("/heroDesktop.png") center / cover fixed;
+  position: relative;
+  isolation: isolate;
+  background: #071a35;
 }
 
 .card {

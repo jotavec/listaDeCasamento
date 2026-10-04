@@ -1,6 +1,6 @@
 "use client";
 
-import Link from "next/link";
+import Link, { useLinkStatus } from "next/link";
 import { usePathname } from "next/navigation";
 import styles from "./AdminNav.module.css";
 
@@ -65,6 +65,11 @@ const items = [
   },
 ];
 
+function NavigationProgress() {
+  const { pending } = useLinkStatus();
+  return pending ? <span className={styles.pending} role="status" aria-label="Carregando página" /> : null;
+}
+
 export function AdminNav() {
   const pathname = usePathname();
 
@@ -84,9 +89,11 @@ export function AdminNav() {
               active ? styles.active : ""
             }`}
             title={item.label}
+            aria-current={active ? "page" : undefined}
           >
             <span className={styles.icon}>{item.icon}</span>
             <span className={styles.label}>{item.label}</span>
+            <NavigationProgress />
           </Link>
         );
       })}

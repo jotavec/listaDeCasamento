@@ -1,4 +1,5 @@
 import Link from "next/link";
+import { AuthBackground } from "@/components/auth/AuthBackground";
 import { requirePasswordSession } from "@/lib/auth/passwordSession";
 import { SubmitButton } from "@/components/auth/SubmitButton";
 import { updatePassword } from "./actions";
@@ -19,6 +20,7 @@ export default async function ResetPasswordPage({ searchParams }: {
   const passwordUnchanged = params.erro === "igual";
   return (
     <main className={styles.page}>
+      <AuthBackground />
       <section className={styles.card}>
         <div className={styles.monogram}>J & J</div>
         <p className={styles.kicker}>RECUPERAR ACESSO</p>

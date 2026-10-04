@@ -3,6 +3,7 @@
 import { useEffect, useState } from "react";
 import { useRouter } from "next/navigation";
 import { createClient } from "@/lib/supabase/client";
+import { AuthBackground } from "@/components/auth/AuthBackground";
 import styles from "./mfa.module.css";
 
 type Mode = "loading" | "enroll" | "challenge";
@@ -83,6 +84,7 @@ export function MfaClient({ destination = "/admin" }: { destination?: "/admin" |
   }, [router, destination]);
 
   async function verify() {
+    if (working) return;
     const cleanCode = code.replace(/\D/g, "");
 
     if (cleanCode.length !== 6 || !factorId) {
@@ -117,11 +119,11 @@ export function MfaClient({ destination = "/admin" }: { destination?: "/admin" |
     }
 
     router.replace(destination);
-    router.refresh();
   }
 
   return (
     <main className={styles.page}>
+      <AuthBackground />
       <section className={styles.card}>
         <div className={styles.monogram}>J & J</div>
         <p className={styles.kicker}>SEGURANÇA</p>

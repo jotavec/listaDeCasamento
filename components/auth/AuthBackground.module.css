@@ -1,0 +1,18 @@
+.background {
+  position: fixed;
+  inset: 0;
+  z-index: -1;
+  pointer-events: none;
+  background: #071a35;
+}
+
+.background::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(rgba(3, 14, 32, 0.76), rgba(3, 14, 32, 0.86));
+}
+
+.image {
+  object-fit: cover;
+}
