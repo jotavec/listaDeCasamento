@@ -7,7 +7,7 @@ export async function updatePassword(formData: FormData) {
   const supabase = await requirePasswordSession();
   const password = String(formData.get("password") ?? "");
   const confirmation = String(formData.get("confirmation") ?? "");
-  if (password.length < 12 || password.length > 128) redirect("/redefinir-senha?erro=tamanho");
+  if (password.length < 8 || password.length > 128) redirect("/redefinir-senha?erro=tamanho");
   if (password !== confirmation) redirect("/redefinir-senha?erro=confirmacao");
 
   const { error } = await supabase.auth.updateUser({ password });
