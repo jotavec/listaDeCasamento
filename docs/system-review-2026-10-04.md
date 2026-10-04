@@ -51,7 +51,7 @@ Presentes, financeiro e relatórios administrativos ainda são módulos de apres
 
 ## Verificação
 
-- Build de produção e TypeScript aprovados com Next.js 16.3.8.
+- Build de produção e TypeScript aprovados com Next.js 16.3.8. A publicação usa `next build --webpack`: o Turbopack falhou no carregador de fontes Google no ambiente Vercel após a atualização. As mesmas fontes e a versão corrigida do framework foram preservadas.
 - ESLint: zero erros; aviso anterior de `<img>` no QR code do MFA permanece.
 - `npm audit --omit=dev`: zero vulnerabilidades conhecidas na data da consulta.
 - Teste SQL: busca normalizada, curingas tratados literalmente, rejeição de token incorreto/dados nulos/capacidade excedida, confirmação e recusa válidas. Todos os dados sintéticos foram revertidos na mesma transação.
