@@ -15,7 +15,7 @@ export function SiteHeader() {
 
   return (
     <header className="nav-wrap">
-      <a className="monogram" href="#inicio" aria-label="Voltar ao início" onClick={closeMenu}>
+      <a className="monogram" href="/login" aria-label="Acessar administração" onClick={closeMenu}>
         <Monogram width={120} priority />
       </a>
 
