@@ -524,8 +524,6 @@ button:disabled {
   }
 
   .hero-content .eyebrow {
-  position: relative;
-  left: 10px;
     font-size: 8px;
     line-height: 1.7;
     letter-spacing: 0.24em;
@@ -669,9 +667,11 @@ button:disabled {
 }
 
 
-.hero-content h1 {
-  position: relative;
-  left: 18px;
+@media (min-width: 761px) {
+  .hero-content h1 {
+    position: relative;
+    left: 18px;
+  }
 }
 
 /* Countdown maior */
