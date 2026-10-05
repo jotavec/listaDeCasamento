@@ -14,6 +14,18 @@ const nextConfig: NextConfig = {
   async redirects() {
     return [{ source: "/", destination: "/casamento", permanent: false }];
   },
+  async rewrites() {
+    return [
+      {
+        source: "/curriculo",
+        destination: "https://dra-jessica-six.vercel.app/curriculo",
+      },
+      {
+        source: "/curriculo/:path*",
+        destination: "https://dra-jessica-six.vercel.app/curriculo/:path*",
+      },
+    ];
+  },
   async headers() {
     const privateRoutes = [
       "/login", "/recuperar-senha", "/redefinir-senha",
