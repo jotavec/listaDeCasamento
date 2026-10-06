@@ -19,7 +19,7 @@ const items = [
   },
   {
     href: "/admin/convidados",
-    label: "Convidados",
+    label: "Convites",
     icon: (
       <svg viewBox="0 0 24 24" aria-hidden="true">
         <circle cx="9" cy="8" r="3" />

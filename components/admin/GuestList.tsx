@@ -150,7 +150,7 @@ export function GuestList({ invitations, error }: { invitations: Invitation[]; e
               aria-label="Buscar convidado por nome"
               type="search"
               defaultValue={params.busca ?? ""}
-              placeholder="Buscar convidado..."
+              placeholder="Nome..."
               autoComplete="off"
             />
 

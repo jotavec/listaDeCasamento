@@ -411,3 +411,15 @@
  .chartCard,.sideCard,.financeCard,.quickCard { padding:20px; }
  .chartBody { padding-top:24px; padding-bottom:12px; }
 }
+
+@media (max-width:420px) {
+ .summaryGrid { grid-template-columns:minmax(0,1fr); }
+ .mainMetric { display:grid; grid-template-columns:minmax(0,1fr) auto; min-height:150px; align-items:center; gap:12px 20px; }
+ .mainMetric > strong { grid-column:2; grid-row:1; }
+ .mainMetric p,.metric p { font-size:12px; }
+ .mainMetric span,.metric span { font-size:13px; }
+ .metric { display:grid; grid-template-columns:36px minmax(0,1fr) auto; align-items:center; gap:4px 12px; }
+ .metricIcon { grid-row:1 / 3; margin:0; }
+ .metric strong { grid-column:3; grid-row:1 / 3; margin:0; font-size:30px; }
+ .metric span { grid-column:2; }
+}
