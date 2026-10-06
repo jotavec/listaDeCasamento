@@ -1,3 +1,4 @@
+import { Suspense } from "react";
 import { CountdownSection } from "@/components/CountdownSection";
 import { DetailsSection } from "@/components/DetailsSection";
 import { GiftsSection } from "@/components/GiftsSection";
@@ -14,7 +15,7 @@ export default function Home() {
       <StorySection />
       <CountdownSection />
       <DetailsSection />
-      <GiftsSection />
+      <Suspense fallback={<section className="gifts" id="presentes"><div className="gifts-card"><h2>Lista de presentes</h2><p>Carregando presentes…</p></div></section>}><GiftsSection /></Suspense>
       <RsvpSection />
     </main>
   );

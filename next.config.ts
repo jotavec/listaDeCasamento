@@ -11,6 +11,15 @@ const codespaceHost = isCodespaces
 
 const nextConfig: NextConfig = {
   poweredByHeader: false,
+  images: {
+    remotePatterns: [{ protocol: "https", hostname: "tssagqvlllburdncoskm.supabase.co", pathname: "/storage/v1/object/public/gift-images/**" }],
+  },
+  experimental: {
+    serverActions: {
+      bodySizeLimit: "3mb",
+      ...(codespaceHost ? { allowedOrigins: [codespaceHost, "localhost:3000"] } : {}),
+    },
+  },
   async redirects() {
     return [{ source: "/", destination: "/casamento", permanent: false }];
   },
@@ -58,14 +67,6 @@ const nextConfig: NextConfig = {
   ...(isCodespaces && codespaceHost
     ? {
         allowedDevOrigins: [codespaceHost],
-        experimental: {
-          serverActions: {
-            allowedOrigins: [
-              codespaceHost,
-              "localhost:3000",
-            ],
-          },
-        },
       }
     : {}),
 };
