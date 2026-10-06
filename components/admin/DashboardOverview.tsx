@@ -2,7 +2,7 @@ import Link from "next/link";
 import styles from "@/app/admin/dashboard.module.css";
 
 type SummaryInvitation = { rsvpstatus: string; maxadults: number | null };
-export function DashboardOverview({ invitations }: { invitations: SummaryInvitation[] }) {
+export function DashboardOverview({ invitations, giftCount = 0 }: { invitations: SummaryInvitation[]; giftCount?: number }) {
   const guests = invitations;
 
   const totalInvites = guests.length;
@@ -176,11 +176,11 @@ export function DashboardOverview({ invitations }: { invitations: SummaryInvitat
           <div className={styles.moduleEmpty}>
             <div>♢</div>
 
-            <strong>Pronta para configurar</strong>
+            <strong>{giftCount} {giftCount === 1 ? "presente publicado" : "presentes publicados"}</strong>
 
             <span>
-              Cadastre os presentes que ficarão disponíveis
-              no site.
+              Cadastre ou edite a foto, o título e o valor.
+              As alterações aparecem no site.
             </span>
 
             <Link href="/admin/presentes">

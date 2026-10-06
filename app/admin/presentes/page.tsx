@@ -1,18 +1,11 @@
-import styles from "../modulePlaceholder.module.css";
+import { requireAdmin } from "@/lib/auth/requireAdmin";
+import { createClient } from "@/lib/supabase/server";
+import { GIFT_COLUMNS } from "@/lib/gifts/shared";
+import { GiftManager } from "@/components/admin/GiftManager";
 
-export default function Page() {
-  return (
-    <main className={styles.page}>
-      <p>PRESENTES</p>
-      <h1>Lista de presentes</h1>
-      <span>Aqui vamos cadastrar os presentes disponíveis no site, valor, imagem e status.</span>
-
-      <div className={styles.empty}>
-        <strong>Módulo pronto para construção</strong>
-        <small>
-          Vamos montar esta área mantendo o mesmo padrão visual do dashboard.
-        </small>
-      </div>
-    </main>
-  );
+export default async function GiftsPage() {
+  await requireAdmin();
+  const supabase = await createClient();
+  const { data, error } = await supabase.from("gifts").select(GIFT_COLUMNS).order("created_at", { ascending: false }).order("id");
+  return <GiftManager gifts={data ?? []} loadError={Boolean(error)} />;
 }

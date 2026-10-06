@@ -6,9 +6,10 @@ export default async function AdminDashboard() {
   await requireAdmin();
   const supabase = await createClient();
 
-  const { data: invitations } = await supabase
-    .from("invitations")
-    .select("rsvpstatus,maxadults");
+  const [{ data: invitations }, { count: giftCount }] = await Promise.all([
+    supabase.from("invitations").select("rsvpstatus,maxadults"),
+    supabase.from("gifts").select("id", { count: "exact", head: true }),
+  ]);
 
-  return <DashboardOverview invitations={invitations ?? []} />;
+  return <DashboardOverview invitations={invitations ?? []} giftCount={giftCount ?? 0} />;
 }
