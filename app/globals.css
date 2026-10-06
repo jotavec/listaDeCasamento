@@ -74,7 +74,7 @@ img { max-width:100%; }
 .final-monogram { margin-top:32px; }
 .final-date { margin:12px 0 0; font-size:12px; letter-spacing:.18em; color:#85632e; }
 .site-footer { padding:24px; background:var(--navy); color:#ffffffb3; text-align:center; font-size:13px; }
-@media (max-width:760px) {
+@media (max-width:960px) {
   .nav-wrap { height:80px; padding:0 20px; }
   .nav-wrap .monogram { position:relative; z-index:3; max-width:105px; }
   .menu-button { display:block; z-index:3; }
@@ -82,9 +82,11 @@ img { max-width:100%; }
   .nav-wrap nav.open { display:flex; }
   .nav-wrap nav a { font-size:14px; min-height:48px; padding:12px 16px; letter-spacing:.03em; border-radius:6px; }
   .nav-wrap nav a:hover { background:#ffffff0f; }
+}
+@media (max-width:760px) {
   .hero-content { top:14%; padding:28px 8px; width:100%; }
   .hero-content .eyebrow { margin:0 auto 18px; font-size:11px; letter-spacing:.1em; }
-  .hero-content h1 { font-size:clamp(32px,8.7vw,62px); gap:.12em; margin:16px auto; }
+  .hero-content h1 { font-size:clamp(38px,10.5vw,72px); gap:.12em; margin:16px auto; }
   .gold-line { width:170px; margin:20px auto; }
   .date { font-size:28px; letter-spacing:.15em; }
   .place { font-size:12px; letter-spacing:.12em; }
@@ -105,4 +107,5 @@ img { max-width:100%; }
   .gifts { padding:56px 16px; }
   .gifts-card { padding:36px 20px; }
 }
+.rsvp-loading { position:fixed; inset:auto 20px 24px; z-index:100; width:fit-content; max-width:calc(100% - 40px); margin:auto; padding:14px 20px; border-radius:8px; background:var(--navy); color:white; font-size:14px; box-shadow:0 4px 20px #0003; }
 @media (prefers-reduced-motion:reduce) { html { scroll-behavior:auto; } *,*::before,*::after { animation-duration:.01ms !important; transition-duration:.01ms !important; } }

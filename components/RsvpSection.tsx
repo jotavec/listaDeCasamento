@@ -3,7 +3,9 @@
 import dynamic from "next/dynamic";
 import { useCallback, useState } from "react";
 import { Monogram } from "@/components/Monogram";
-const RsvpDialog = dynamic(() => import("./RsvpDialog").then(module => module.RsvpDialog));
+const RsvpDialog = dynamic(() => import("./RsvpDialog").then(module => module.RsvpDialog), {
+  loading: () => <div className="rsvp-loading" role="status">Abrindo confirmação...</div>,
+});
 
 export function RsvpSection() {
   const [open, setOpen] = useState(false);
