@@ -6,7 +6,7 @@ export function HeroSection() {
   return (
     <section className="hero" id="inicio">
       <picture>
-        <source media="(max-width: 760px)" srcSet={mobile.srcSet} sizes="100vw" />
+        <source media="(max-width: 960px)" srcSet={mobile.srcSet} sizes="100vw" />
         {/* Art direction uses the optimized sources produced by Next Image. */}
         <img {...desktop} className="hero-art" alt="" />
       </picture>
