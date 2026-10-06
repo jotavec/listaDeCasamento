@@ -1,3 +1,3 @@
 export function SiteFooter() {
-  return <footer>Jéssica & João Vítor</footer>;
+  return <footer className="site-footer">Jéssica & João Vítor</footer>;
 }

@@ -455,7 +455,7 @@ blockquote cite {
   color: #9a7d49;
 }
 
-footer {
+.site-footer {
   padding: 23px;
   background: var(--navy);
   color: rgba(255, 255, 255, 0.55);
