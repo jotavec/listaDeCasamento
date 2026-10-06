@@ -31,7 +31,7 @@
  .workspace { padding-bottom:calc(86px + env(safe-area-inset-bottom)); }
  .topbar { min-height:78px; padding:16px 20px; gap:12px; }
  .topbar strong { font-size:15px; }
- .topbar p { font-size:10px; letter-spacing:.04em; }
+ .topbar p { font-size:11px; letter-spacing:.04em; }
  .weddingDate { font-size:12px; gap:4px; }
  .content { padding:24px 16px; }
 }
