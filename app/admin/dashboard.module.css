@@ -13,19 +13,19 @@
 
 .welcome > div > p:first-child {
   margin: 0 0 10px;
-  color: #b28748;
-  font-size: 8px;
+  color: #85632e;
+  font-size: 13px;
   font-weight: 700;
-  letter-spacing: 0.22em;
+  letter-spacing: 0.1em;
 }
 
 .welcome h1 {
   margin: 0;
   color: #122b4b;
-  font-family: var(--fontCormorant), Georgia, serif;
-  font-size: clamp(40px, 4vw, 58px);
+  font-family: var(--fontMontserrat), sans-serif;
+  font-size: clamp(26px, 3vw, 38px);
   font-weight: 600;
-  line-height: 0.98;
+  line-height: 1.25;
 }
 
 .welcome h1 span {
@@ -36,24 +36,29 @@
 .subtitle {
   max-width: 550px;
   margin: 15px 0 0;
-  color: #7b8491;
-  font-size: 12px;
+  color: #596579;
+  font-size: 13px;
   line-height: 1.6;
 }
 
 .primaryAction {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 48px;
+  flex-shrink: 0;
   padding: 14px 20px;
   border-radius: 12px;
   background: #0d315a;
   color: white;
   text-decoration: none;
-  font-size: 10px;
+  font-size: 13px;
   font-weight: 600;
 }
 
 .summaryGrid {
   display: grid;
-  grid-template-columns: 1.25fr repeat(3, 0.8fr);
+  grid-template-columns: minmax(0, 1.25fr) repeat(3, minmax(0, .8fr));
   gap: 16px;
 }
 
@@ -64,7 +69,7 @@
 .financeCard,
 .quickCard {
   border: 1px solid #e4ded4;
-  border-radius: 20px;
+  border-radius: 14px;
   background: white;
 }
 
@@ -89,9 +94,9 @@
 .cardHeader p,
 .quickCard > p {
   margin: 0;
-  font-size: 8px;
+  font-size: 13px;
   font-weight: 700;
-  letter-spacing: 0.15em;
+  letter-spacing: 0.05em;
 }
 
 .mainMetric p {
@@ -101,20 +106,20 @@
 .mainMetric span {
   display: block;
   margin-top: 5px;
-  color: rgba(255,255,255,.56);
-  font-size: 10px;
+  color: rgba(255,255,255,.82);
+  font-size: 13px;
 }
 
 .mainMetric > strong {
-  font-family: var(--fontCormorant), Georgia, serif;
-  font-size: 58px;
+  font-family: var(--fontMontserrat), sans-serif;
+  font-size: 42px;
   font-weight: 500;
 }
 
 .mainMetric a {
   grid-column: 1 / -1;
-  color: rgba(255,255,255,.76);
-  font-size: 9px;
+  color: rgba(255,255,255,.88);
+  font-size: 13px;
   text-decoration: none;
 }
 
@@ -134,26 +139,26 @@
 }
 
 .metric p {
-  color: #8b929c;
+  color: #596579;
 }
 
 .metric strong {
   display: block;
   margin: 6px 0;
   color: #142d4d;
-  font-family: var(--fontCormorant), Georgia, serif;
+  font-family: var(--fontMontserrat), sans-serif;
   font-size: 32px;
 }
 
 .metric span {
-  color: #9da2aa;
-  font-size: 9px;
+  color: #596579;
+  font-size: 13px;
 }
 
 .dashboardGrid {
   margin-top: 16px;
   display: grid;
-  grid-template-columns: 1.5fr 0.85fr;
+  grid-template-columns: minmax(0, 1.5fr) minmax(0, .85fr);
   gap: 16px;
 }
 
@@ -165,6 +170,8 @@
 }
 
 .cardHeader {
+  gap: 16px;
+  flex-wrap: wrap;
   display: flex;
   align-items: flex-start;
   justify-content: space-between;
@@ -172,21 +179,21 @@
 
 .cardHeader p,
 .quickCard > p {
-  color: #b08646;
+  color: #85632e;
 }
 
 .cardHeader h2,
 .quickCard h2 {
   margin: 5px 0 0;
   color: #152e4d;
-  font-family: var(--fontCormorant), Georgia, serif;
-  font-size: 24px;
+  font-family: var(--fontMontserrat), sans-serif;
+  font-size: 20px;
 }
 
 .cardHeader a {
-  color: #9a8464;
+  color: #785b2e;
   text-decoration: none;
-  font-size: 9px;
+  font-size: 13px;
 }
 
 .chartBody {
@@ -194,10 +201,11 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  gap: 56px;
+  gap: 32px;
 }
 
 .donut {
+  flex-shrink: 0;
   width: 170px;
   height: 170px;
   padding: 22px;
@@ -218,17 +226,18 @@
 
 .donut strong {
   color: #112c4c;
-  font-family: var(--fontCormorant), Georgia, serif;
+  font-family: var(--fontMontserrat), sans-serif;
   font-size: 36px;
 }
 
 .donut span {
-  color: #9a9fa7;
-  font-size: 9px;
+  color: #596579;
+  font-size: 13px;
 }
 
 .legend {
-  min-width: 190px;
+  min-width: 0;
+  width: min(240px, 100%);
   display: grid;
   gap: 14px;
 }
@@ -259,13 +268,13 @@
 }
 
 .legend span {
-  color: #747d89;
-  font-size: 10px;
+  color: #596579;
+  font-size: 13px;
 }
 
 .legend strong {
   color: #203854;
-  font-size: 11px;
+  font-size: 13px;
 }
 
 .moduleEmpty,
@@ -286,7 +295,7 @@
 .financeEmpty strong {
   margin-top: 10px;
   color: #193350;
-  font-family: var(--fontCormorant), Georgia, serif;
+  font-family: var(--fontMontserrat), sans-serif;
   font-size: 20px;
 }
 
@@ -294,8 +303,8 @@
 .financeEmpty span {
   max-width: 250px;
   margin-top: 5px;
-  color: #9298a0;
-  font-size: 9px;
+  color: #596579;
+  font-size: 13px;
   line-height: 1.5;
 }
 
@@ -306,7 +315,7 @@
   background: #f1ebdf;
   color: #8a6835;
   text-decoration: none;
-  font-size: 9px;
+  font-size: 13px;
 }
 
 .financeCard {
@@ -348,7 +357,7 @@
   border-radius: 9px;
   background: #0d315a;
   color: white;
-  font-size: 8px;
+  font-size: 13px;
 }
 
 .quickLinks div {
@@ -358,12 +367,12 @@
 
 .quickLinks strong {
   color: #1c354f;
-  font-size: 10px;
+  font-size: 13px;
 }
 
 .quickLinks small {
-  color: #9b9fa6;
-  font-size: 8px;
+  color: #596579;
+  font-size: 13px;
 }
 
 @media (max-width: 1150px) {
@@ -383,11 +392,22 @@
   }
 
   .summaryGrid {
-    grid-template-columns: 1fr;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
   }
 
   .chartBody {
     gap: 24px;
     flex-direction: column;
   }
+}
+
+@media (max-width:700px) {
+ .welcome { gap:20px; } .primaryAction { width:100%; }
+ .metric,.mainMetric { min-width:0; padding:16px; }
+ .mainMetric { display:flex; flex-direction:column; align-items:flex-start; justify-content:space-between; gap:12px; }
+ .mainMetric p,.metric p { font-size:11px; letter-spacing:.02em; }
+ .mainMetric span,.metric span { font-size:12px; }
+ .metricIcon { margin-bottom:16px; }
+ .chartCard,.sideCard,.financeCard,.quickCard { padding:20px; }
+ .chartBody { padding-top:24px; padding-bottom:12px; }
 }

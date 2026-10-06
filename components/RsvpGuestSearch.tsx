@@ -87,7 +87,6 @@ export function RsvpGuestSearch({
           placeholder="Comece a digitar seu nome..."
           maxLength={120}
           autoComplete="off"
-          autoFocus
         />
       </div>
 

@@ -1,6 +1,15 @@
+import { getImageProps } from "next/image";
+
 export function HeroSection() {
+  const { props: desktop } = getImageProps({ src: "/heroDesktop.png", width: 1672, height: 941, alt: "", sizes: "100vw", loading: "eager", fetchPriority: "high" });
+  const { props: mobile } = getImageProps({ src: "/heroMobile.png", width: 941, height: 1672, alt: "", sizes: "100vw" });
   return (
     <section className="hero" id="inicio">
+      <picture>
+        <source media="(max-width: 760px)" srcSet={mobile.srcSet} sizes="100vw" />
+        {/* Art direction uses the optimized sources produced by Next Image. */}
+        <img {...desktop} className="hero-art" alt="" />
+      </picture>
       <div className="hero-shade" aria-hidden="true" />
       <div className="hero-content">
         <p className="eyebrow">Nosso para sempre começa aqui</p>

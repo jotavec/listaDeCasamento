@@ -7,7 +7,7 @@ import styles from "./AdminNav.module.css";
 const items = [
   {
     href: "/admin",
-    label: "Dashboard",
+    label: "Início",
     icon: (
       <svg viewBox="0 0 24 24" aria-hidden="true">
         <rect x="3" y="3" width="7" height="7" rx="2" />
@@ -74,7 +74,7 @@ export function AdminNav() {
   const pathname = usePathname();
 
   return (
-    <nav className={styles.nav}>
+    <nav className={styles.nav} aria-label="Administração">
       {items.map((item) => {
         const active =
           item.href === "/admin"

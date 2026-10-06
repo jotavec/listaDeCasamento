@@ -1,6 +1,9 @@
+import Image from "next/image";
+
 export function GiftsSection() {
   return (
     <section className="gifts" id="presentes">
+      <Image src="/heroDesktop.png" alt="" fill sizes="100vw" className="gifts-art" />
       <div className="gifts-card">
         <p className="section-kicker light">Com carinho</p>
         <h2>Lista de presentes</h2>

@@ -8,7 +8,7 @@ import { StorySection } from "@/components/StorySection";
 
 export default function Home() {
   return (
-    <main>
+    <main className="wedding-site">
       <SiteHeader />
       <HeroSection />
       <StorySection />

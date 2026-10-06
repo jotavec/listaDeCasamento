@@ -48,6 +48,7 @@ export function GuestList({ invitations, error }: { invitations: Invitation[]; e
     const search = String(new FormData(event.currentTarget).get("busca") ?? "").trim();
     if (search) query.set("busca", search);
     else query.delete("busca");
+    query.delete("pagina");
     query.delete("ok");
     query.delete("erro");
     window.history.pushState(null, "", `/admin/convidados${query.size ? `?${query}` : ""}`);
@@ -77,6 +78,24 @@ export function GuestList({ invitations, error }: { invitations: Invitation[]; e
     );
   });
 
+  const pageSize = 25;
+  const totalPages = Math.max(1, Math.ceil(filtered.length / pageSize));
+  const requestedPage = Number(searchParams.get("pagina") ?? 1);
+  const page = Math.min(totalPages, Math.max(1, Number.isInteger(requestedPage) ? requestedPage : 1));
+  const visibleGuests = filtered.slice((page - 1) * pageSize, page * pageSize);
+
+  function filterHref(key?: string, value?: string) {
+    const query = new URLSearchParams(searchParams.toString());
+    for (const field of ["lado", "status", "pagina", "ok", "erro"]) query.delete(field);
+    if (key && value) query.set(key, value);
+    return `/admin/convidados${query.size ? `?${query}` : ""}`;
+  }
+  function pageHref(number: number) {
+    const query = new URLSearchParams(searchParams.toString());
+    query.set("pagina", String(number));
+    return `/admin/convidados?${query}`;
+  }
+
   return (
     <main className={styles.page}>
       <header className={styles.heading}>
@@ -93,7 +112,7 @@ export function GuestList({ invitations, error }: { invitations: Invitation[]; e
       </header>
 
       {params.ok && (
-        <div className={styles.success}>
+        <div className={styles.success} role="status">
           {params.ok === "excluido"
             ? "Convidado removido da lista."
             : "Convidado cadastrado com sucesso."}
@@ -101,7 +120,7 @@ export function GuestList({ invitations, error }: { invitations: Invitation[]; e
       )}
 
       {params.erro && (
-        <div className={styles.error}>
+        <div className={styles.error} role="alert">
           Não foi possível concluir a operação.
         </div>
       )}
@@ -128,6 +147,7 @@ export function GuestList({ invitations, error }: { invitations: Invitation[]; e
             <input
               key={params.busca}
               name="busca"
+              aria-label="Buscar convidado por nome"
               type="search"
               defaultValue={params.busca ?? ""}
               placeholder="Buscar convidado..."
@@ -140,9 +160,9 @@ export function GuestList({ invitations, error }: { invitations: Invitation[]; e
           </form>
         </div>
 
-        <nav className={styles.filters}>
+        <nav className={styles.filters} aria-label="Filtrar convidados">
           <FilterLink
-            href="/admin/convidados"
+            href={filterHref()}
             className={
               !params.lado && !params.status
                 ? styles.active
@@ -153,7 +173,7 @@ export function GuestList({ invitations, error }: { invitations: Invitation[]; e
           </FilterLink>
 
           <FilterLink
-            href="/admin/convidados?lado=bride"
+            href={filterHref("lado", "bride")}
             className={
               params.lado === "bride"
                 ? styles.active
@@ -164,7 +184,7 @@ export function GuestList({ invitations, error }: { invitations: Invitation[]; e
           </FilterLink>
 
           <FilterLink
-            href="/admin/convidados?lado=groom"
+            href={filterHref("lado", "groom")}
             className={
               params.lado === "groom"
                 ? styles.active
@@ -175,7 +195,7 @@ export function GuestList({ invitations, error }: { invitations: Invitation[]; e
           </FilterLink>
 
           <FilterLink
-            href="/admin/convidados?status=pending"
+            href={filterHref("status", "pending")}
             className={
               params.status === "pending"
                 ? styles.active
@@ -186,7 +206,7 @@ export function GuestList({ invitations, error }: { invitations: Invitation[]; e
           </FilterLink>
 
           <FilterLink
-            href="/admin/convidados?status=confirmed"
+            href={filterHref("status", "confirmed")}
             className={
               params.status === "confirmed"
                 ? styles.active
@@ -213,8 +233,9 @@ export function GuestList({ invitations, error }: { invitations: Invitation[]; e
             </strong>
 
             <span>
-              Cadastre o primeiro convite usando
-              o botão no topo da tela.
+              {params.busca || params.lado || params.status
+                ? "Tente outro nome ou selecione outro filtro."
+                : "Cadastre o primeiro convite usando o botão no topo da tela."}
             </span>
           </div>
         ) : (
@@ -227,7 +248,7 @@ export function GuestList({ invitations, error }: { invitations: Invitation[]; e
               <span />
             </div>
 
-            {filtered.map((guest) => (
+            {visibleGuests.map((guest) => (
               <article
                 className={styles.row}
                 key={guest.id}
@@ -313,6 +334,11 @@ export function GuestList({ invitations, error }: { invitations: Invitation[]; e
             ))}
           </div>
         )}
+        {!error && totalPages > 1 && <nav className={styles.pagination} aria-label="Páginas de convidados">
+          {page > 1 ? <FilterLink href={pageHref(page - 1)}>Anterior</FilterLink> : <span />}
+          <span>{page} de {totalPages} · {filtered.length} convites</span>
+          {page < totalPages ? <FilterLink href={pageHref(page + 1)}>Próxima</FilterLink> : <span />}
+        </nav>}
       </section>
     </main>
   );

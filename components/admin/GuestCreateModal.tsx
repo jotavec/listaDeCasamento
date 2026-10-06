@@ -1,7 +1,9 @@
 "use client";
 
 import { Monogram } from "@/components/Monogram";
-import { useEffect, useState } from "react";
+import { useCallback, useState } from "react";
+import { createPortal } from "react-dom";
+import { useDialogFocus } from "@/components/useDialogFocus";
 import { createInvitation } from "@/app/admin/convidados/actions";
 import { SubmitButton } from "@/components/auth/SubmitButton";
 import styles from "./GuestCreateModal.module.css";
@@ -9,25 +11,8 @@ import styles from "./GuestCreateModal.module.css";
 export function GuestCreateModal() {
   const [open, setOpen] = useState(false);
 
-  useEffect(() => {
-    if (!open) return;
-
-    const previous = document.body.style.overflow;
-    document.body.style.overflow = "hidden";
-
-    function handleKey(event: KeyboardEvent) {
-      if (event.key === "Escape") {
-        setOpen(false);
-      }
-    }
-
-    window.addEventListener("keydown", handleKey);
-
-    return () => {
-      document.body.style.overflow = previous;
-      window.removeEventListener("keydown", handleKey);
-    };
-  }, [open]);
+  const close = useCallback(() => setOpen(false), []);
+  const dialogRef = useDialogFocus(open, close);
 
   return (
     <>
@@ -40,7 +25,7 @@ export function GuestCreateModal() {
         Cadastrar convidado
       </button>
 
-      {open && (
+      {open && createPortal(
         <div
           className={styles.overlay}
           role="presentation"
@@ -52,6 +37,8 @@ export function GuestCreateModal() {
         >
           <section
             className={styles.modal}
+            ref={dialogRef}
+            tabIndex={-1}
             role="dialog"
             aria-modal="true"
             aria-labelledby="guest-modal-title"
@@ -104,7 +91,6 @@ export function GuestCreateModal() {
                   placeholder="Ex.: Maria Aparecida da Silva"
                   maxLength={120}
                   autoComplete="off"
-                  autoFocus
                   required
                 />
               </div>
@@ -190,7 +176,7 @@ export function GuestCreateModal() {
               </footer>
             </form>
           </section>
-        </div>
+        </div>, document.body
       )}
     </>
   );
