@@ -4,7 +4,7 @@ import { randomUUID } from "node:crypto";
 import { revalidatePath, updateTag } from "next/cache";
 import { requireAdmin } from "@/lib/auth/requireAdmin";
 import { createClient } from "@/lib/supabase/server";
-import { GIFT_BUCKET, MAX_PHOTO_BYTES, parsePrice, type GiftResult } from "@/lib/gifts/shared";
+import { GIFT_BUCKET, MAX_PHOTO_BYTES, isImportedGiftImage, parsePrice, type GiftResult } from "@/lib/gifts/shared";
 import { processGiftPhoto } from "@/lib/gifts/photo";
 
 const uuid = /^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$/i;
@@ -55,7 +55,7 @@ export async function saveGift(form: FormData): Promise<GiftResult> {
     if (uploadedPath) await supabase.storage.from(GIFT_BUCKET).remove([uploadedPath]);
     return { ok: false, message: "Não foi possível salvar. Atualize a página se o presente foi alterado em outra tela." };
   }
-  if (uploadedPath && oldPath) {
+  if (uploadedPath && oldPath && !isImportedGiftImage(oldPath)) {
     const { error: cleanupError } = await supabase.storage.from(GIFT_BUCKET).remove([oldPath]);
     if (cleanupError) console.error("Gift photo cleanup failed after update");
   }
@@ -69,8 +69,10 @@ export async function deleteGift(id: string, version: string): Promise<GiftResul
   const supabase = await createClient();
   const { data, error } = await supabase.from("gifts").delete().eq("id", id).eq("updated_at", version).select("image_path").single();
   if (error || !data) return { ok: false, message: "Não foi possível excluir. Atualize a página e tente novamente." };
-  const { error: cleanupError } = await supabase.storage.from(GIFT_BUCKET).remove([data.image_path]);
-  if (cleanupError) console.error("Gift photo cleanup failed after deletion");
+  if (!isImportedGiftImage(data.image_path)) {
+    const { error: cleanupError } = await supabase.storage.from(GIFT_BUCKET).remove([data.image_path]);
+    if (cleanupError) console.error("Gift photo cleanup failed after deletion");
+  }
   refreshGifts();
   return { ok: true, message: "Presente excluído da lista e do site." };
 }
