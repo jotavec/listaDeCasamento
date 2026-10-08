@@ -23,6 +23,7 @@ export function formatPrice(cents: number) {
 // Product photos from the spreadsheet import are bundled with the site.
 // Photos added or replaced in the admin continue to use Supabase Storage.
 const importedGiftImages = new Set<string>([
+  "fa97132f-02a7-40bd-a315-a855ccfc845c.webp",
   "554aebe9-c538-4c05-adf5-f27907e10f85.webp",
   "6cfe64b7-178f-448f-9149-c63a91085c3f.webp",
   "ba0069a3-23f3-440d-818b-d2f4a81350c1.webp",
