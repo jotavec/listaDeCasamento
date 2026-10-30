@@ -1,6 +1,7 @@
 "use client";
 
 import { useState } from "react";
+import Link from "next/link";
 import { Monogram } from "./Monogram";
 
 const navigation = [
@@ -37,9 +38,9 @@ export function SiteHeader() {
             {item.label}
           </a>
         ))}
-        <a className="nav-rsvp" href="#presenca" onClick={closeMenu}>
+        <Link className="nav-rsvp" href="/casamento/presenca" onClick={closeMenu}>
           Confirmar presença
-        </a>
+        </Link>
       </nav>
     </header>
   );

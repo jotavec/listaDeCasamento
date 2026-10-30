@@ -59,9 +59,9 @@ img { max-width:100%; }
 .detail-icon { display:block; color:var(--gold); font-family:var(--fontCormorant),serif; font-size:44px; }
 .detail-grid h3 { margin:16px 0; font-family:var(--fontCormorant),serif; font-size:36px; font-weight:500; line-height:1.2; }
 .detail-grid p { color:#596579; font-size:16px; line-height:1.8; }
-.detail-grid button,.gifts-card > button,.rsvp > button { min-height:48px; padding:13px 22px; border:1px solid #b29057; border-radius:6px; color:#775722; background:transparent; font-size:13px; font-weight:600; line-height:1.5; }
-.rsvp > button { background:var(--navy); color:white; border-color:var(--navy); }
-.rsvp > button:hover { background:#153657; }
+.detail-grid button,.gifts-card > button,.rsvp-link { min-height:48px; padding:13px 22px; border:1px solid #b29057; border-radius:6px; color:#775722; background:transparent; font-size:13px; font-weight:600; line-height:1.5; }
+.rsvp-link { display:inline-flex; align-items:center; justify-content:center; text-decoration:none; background:var(--navy); color:white; border-color:var(--navy); }
+.rsvp-link:hover { background:#153657; }
 .dress-note { margin:40px 0 0; font-size:13px; line-height:1.7; color:#596579; }
 .dress-note span { color:#94703b; margin:0 8px; }
 .gifts { position:relative; isolation:isolate; padding:88px 24px; background:var(--navy); }
@@ -107,5 +107,4 @@ img { max-width:100%; }
   .gifts { padding:56px 16px; }
   .gifts-card { padding:36px 20px; }
 }
-.rsvp-loading { position:fixed; inset:auto 20px 24px; z-index:100; width:fit-content; max-width:calc(100% - 40px); margin:auto; padding:14px 20px; border-radius:8px; background:var(--navy); color:white; font-size:14px; box-shadow:0 4px 20px #0003; }
 @media (prefers-reduced-motion:reduce) { html { scroll-behavior:auto; } *,*::before,*::after { animation-duration:.01ms !important; transition-duration:.01ms !important; } }

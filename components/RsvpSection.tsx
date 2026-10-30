@@ -1,16 +1,8 @@
-"use client";
-
-import dynamic from "next/dynamic";
-import { useCallback, useState } from "react";
+import Link from "next/link";
 import { Monogram } from "@/components/Monogram";
-const RsvpDialog = dynamic(() => import("./RsvpDialog").then(module => module.RsvpDialog), {
-  loading: () => <div className="rsvp-loading" role="status">Abrindo confirmação...</div>,
-});
 
 export function RsvpSection() {
-  const [open, setOpen] = useState(false);
-  const close = useCallback(() => setOpen(false), []);
-  return <>
+  return (
       <section className="rsvp" id="presenca">
         <p className="section-kicker">
           Esperamos você
@@ -24,12 +16,9 @@ export function RsvpSection() {
           tudo para este dia tão especial.
         </p>
 
-        <button
-          type="button"
-          onClick={() => setOpen(true)}
-        >
+        <Link className="rsvp-link" href="/casamento/presenca">
           Confirmar presença
-        </button>
+        </Link>
 
         <div className="final-monogram">
           <Monogram width={210} tone="color" />
@@ -39,7 +28,5 @@ export function RsvpSection() {
           26 · 03 · 2027
         </p>
       </section>
-
-      {open && <RsvpDialog onClose={close} />}
-    </>;
+  );
 }

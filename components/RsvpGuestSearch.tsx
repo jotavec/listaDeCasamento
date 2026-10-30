@@ -5,7 +5,7 @@ import {
   useState,
 } from "react";
 
-import styles from "./RsvpModal.module.css";
+import styles from "./RsvpPage.module.css";
 
 type Props = {
   value: string;
@@ -73,8 +73,11 @@ export function RsvpGuestSearch({
       </label>
 
       <div className={styles.liveSearch}>
-        <span className={styles.searchIcon}>
-          ⌕
+        <span className={styles.searchIcon} aria-hidden="true">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none">
+            <circle cx="10.5" cy="10.5" r="6.5" stroke="currentColor" strokeWidth="1.5" />
+            <path d="m16 16 5 5" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" />
+          </svg>
         </span>
 
         <input
@@ -87,18 +90,20 @@ export function RsvpGuestSearch({
           placeholder="Comece a digitar seu nome..."
           maxLength={120}
           autoComplete="off"
+          disabled={loading}
+          aria-describedby="guest-search-status"
         />
       </div>
 
       {value.trim().length < 3 && (
-        <p className={styles.searchHint}>
+        <p id="guest-search-status" className={styles.searchHint}>
           Digite pelo menos 3 letras para
           localizar seu convite.
         </p>
       )}
 
       {value.trim().length >= 3 && (
-        <div className={styles.results}>
+        <div id="guest-search-status" className={styles.results} aria-live="polite" aria-busy={searching}>
           {searching && (
             <div
               className={styles.searchStatus}
