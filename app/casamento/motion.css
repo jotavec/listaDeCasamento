@@ -1,7 +1,5 @@
 /* Motion belongs to the public wedding site, never to the administration. */
-.wedding-page-enter { animation: wedding-page-arrive 480ms cubic-bezier(.22,1,.36,1) both; }
 html[data-wedding-transition] { scroll-behavior: auto; }
-html[data-wedding-transition] .wedding-page-enter { animation: none; }
 html[data-wedding-transition]::view-transition-old(root) { animation: wedding-page-depart 240ms ease both; }
 html[data-wedding-transition]::view-transition-new(root) { animation: wedding-page-arrive 480ms cubic-bezier(.22,1,.36,1) both; }
 html[data-wedding-transition]::view-transition-group(root) { animation-duration: 480ms; }
