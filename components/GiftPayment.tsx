@@ -1,6 +1,6 @@
 "use client";
 
-import { useCallback, useRef, useState } from "react";
+import { useCallback, useLayoutEffect, useRef, useState } from "react";
 import { createPortal } from "react-dom";
 import { formatPrice, type Gift } from "@/lib/gifts/shared";
 import { type PixPayment } from "@/lib/gifts/pix";
@@ -39,6 +39,24 @@ function PaymentDialog({ gift, saved, onClose }: { gift: Gift; saved: SavedPayme
   const codeInput = useRef<HTMLTextAreaElement>(null);
   const close = useCallback(() => { if (!locked.current) onClose(); }, [onClose]);
   const dialogRef = useDialogFocus(true, close);
+
+  useLayoutEffect(() => {
+    const input = codeInput.current;
+    if (!input) return;
+    const fitCode = () => {
+      input.style.height = "auto";
+      input.style.height = `${input.scrollHeight + input.offsetHeight - input.clientHeight}px`;
+    };
+    let width = input.clientWidth;
+    fitCode();
+    const observer = new ResizeObserver(() => {
+      if (input.clientWidth === width) return;
+      width = input.clientWidth;
+      fitCode();
+    });
+    observer.observe(input);
+    return () => observer.disconnect();
+  }, [payment?.code, reported]);
 
   async function prepare(form: FormData) {
     if (locked.current) return;
@@ -95,7 +113,7 @@ function PaymentDialog({ gift, saved, onClose }: { gift: Gift; saved: SavedPayme
           </div>
           <p className={styles.receiver}>Recebedor: <strong>{payment.receiver_name}</strong></p>
           <label htmlFor="pix-code">Pix Copia e Cola</label>
-          <textarea ref={codeInput} id="pix-code" value={payment.code} readOnly rows={2} onFocus={event => event.target.select()} />
+          <textarea ref={codeInput} id="pix-code" value={payment.code} readOnly rows={1} onFocus={event => event.target.select()} />
           <button type="button" className={styles.copy} onClick={async () => {
             try { await navigator.clipboard.writeText(payment.code); setCopied(true); }
             catch { codeInput.current?.focus(); codeInput.current?.select(); setError("Selecione o código acima e use a opção Copiar do seu aparelho."); }
