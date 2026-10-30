@@ -1,8 +1,9 @@
 import Link from "next/link";
 import styles from "@/app/admin/dashboard.module.css";
+import { formatPrice } from "@/lib/gifts/shared";
 
 type SummaryInvitation = { rsvpstatus: string; maxadults: number | null };
-export function DashboardOverview({ invitations, giftCount = 0 }: { invitations: SummaryInvitation[]; giftCount?: number }) {
+export function DashboardOverview({ invitations, giftCount = 0, payments = null }: { invitations: SummaryInvitation[]; giftCount?: number; payments?: { confirmedCents: number; pendingCount: number } | null }) {
   const guests = invitations;
 
   const totalInvites = guests.length;
@@ -202,10 +203,10 @@ export function DashboardOverview({ invitations, giftCount = 0 }: { invitations:
           </div>
 
           <div className={styles.financeEmpty}>
-            <strong>R$ 0,00</strong>
+            <strong>{payments ? formatPrice(payments.confirmedCents) : "—"}</strong>
 
             <span>
-              Nenhuma movimentação financeira cadastrada.
+              {payments ? `Recebido e confirmado. ${payments.pendingCount} ${payments.pendingCount === 1 ? "aviso para conferir" : "avisos para conferir"}.` : "Não foi possível carregar os recebimentos."}
             </span>
           </div>
         </article>

@@ -1,18 +1,14 @@
-import styles from "../modulePlaceholder.module.css";
+import { requireAdmin } from "@/lib/auth/requireAdmin";
+import { createClient } from "@/lib/supabase/server";
+import { loadPaymentReports } from "@/lib/gifts/reports";
+import { PaymentManager } from "@/components/admin/PaymentManager";
 
-export default function Page() {
-  return (
-    <main className={styles.page}>
-      <p>FINANCEIRO</p>
-      <h1>Gestão financeira</h1>
-      <span>Aqui vamos centralizar valores recebidos, presentes pagos e movimentações do casamento.</span>
-
-      <div className={styles.empty}>
-        <strong>Módulo pronto para construção</strong>
-        <small>
-          Vamos montar esta área mantendo o mesmo padrão visual do dashboard.
-        </small>
-      </div>
-    </main>
-  );
+export default async function FinancePage() {
+  await requireAdmin();
+  const supabase = await createClient();
+  const [reports, { data: settings, error }] = await Promise.all([
+    loadPaymentReports(supabase).catch(() => null),
+    supabase.from("pix_settings").select("id,key_type,pix_key,receiver_name,receiver_city,enabled,updated_at").eq("id", true).single(),
+  ]);
+  return <PaymentManager reports={reports ?? []} settings={settings} loadError={reports === null || Boolean(error)} />;
 }
