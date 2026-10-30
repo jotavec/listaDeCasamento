@@ -4,6 +4,7 @@ import { useCallback, useLayoutEffect, useRef, useState } from "react";
 import { createPortal } from "react-dom";
 import { formatPrice, type Gift } from "@/lib/gifts/shared";
 import { type PixPayment } from "@/lib/gifts/pix";
+import { Monogram } from "./Monogram";
 import { useDialogFocus } from "./useDialogFocus";
 import styles from "./GiftPayment.module.css";
 
@@ -92,7 +93,7 @@ function PaymentDialog({ gift, saved, onClose }: { gift: Gift; saved: SavedPayme
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" aria-hidden="true"><path d="m6 6 12 12M18 6 6 18" /></svg>
       </button>
       <div className={styles.brand} aria-label="Jéssica e João Vítor, 26 de março de 2027">
-        <span className={styles.monogram} aria-hidden="true">J<span>&</span>J</span>
+        <span className={styles.monogram}><Monogram width={88} tone="color" /></span>
         <span className={styles.occasion}>JÉSSICA & JOÃO VÍTOR<small>26 DE MARÇO DE 2027</small></span>
       </div>
       {reported ? <div className={styles.thanks} aria-live="polite">
