@@ -1,6 +1,6 @@
 export function DetailsSection() {
   return (
-    <section className="details" id="detalhes">
+    <section className="details" id="detalhes" data-reveal>
       <p className="section-kicker">Reserve esta data</p>
       <h2>O grande dia</h2>
       <div className="detail-grid">

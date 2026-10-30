@@ -1,0 +1,48 @@
+/* Motion belongs to the public wedding site, never to the administration. */
+.wedding-page-enter { animation: wedding-page-arrive 480ms cubic-bezier(.22,1,.36,1) both; }
+html[data-wedding-transition] { scroll-behavior: auto; }
+html[data-wedding-transition] .wedding-page-enter { animation: none; }
+html[data-wedding-transition]::view-transition-old(root) { animation: wedding-page-depart 240ms ease both; }
+html[data-wedding-transition]::view-transition-new(root) { animation: wedding-page-arrive 480ms cubic-bezier(.22,1,.36,1) both; }
+html[data-wedding-transition]::view-transition-group(root) { animation-duration: 480ms; }
+
+@keyframes wedding-page-arrive { from { opacity: 0; } to { opacity: 1; } }
+@keyframes wedding-page-depart { to { opacity: 0; } }
+@keyframes wedding-rise { from { opacity: 0; translate: 0 18px; } to { opacity: 1; translate: 0 0; } }
+@keyframes wedding-art-arrive { from { scale: 1.035; opacity: .6; } to { scale: 1; opacity: 1; } }
+@keyframes wedding-line-arrive { from { clip-path: inset(0 50%); opacity: 0; } to { clip-path: inset(0); opacity: .9; } }
+@keyframes wedding-menu-arrive { from { opacity: 0; translate: 0 -10px; } to { opacity: 1; translate: 0 0; } }
+
+.wedding-site .hero-art { animation: wedding-art-arrive 1600ms cubic-bezier(.22,1,.36,1) both; }
+.wedding-site .hero-content .eyebrow { animation: wedding-rise 850ms 100ms both; }
+.wedding-site .hero-content h1 > span { animation: wedding-rise 1000ms cubic-bezier(.22,1,.36,1) both; }
+.wedding-site .hero-content h1 > span:nth-child(1) { animation-delay: 160ms; }
+.wedding-site .hero-content h1 > span:nth-child(2) { animation-delay: 280ms; }
+.wedding-site .hero-content h1 > span:nth-child(3) { animation-delay: 380ms; }
+.wedding-site .gold-line { animation: wedding-line-arrive 1000ms 450ms both; }
+.wedding-site .hero-bottom > p { animation: wedding-rise 850ms 400ms both; }
+.wedding-site .scroll { transition: color 200ms, translate 250ms; }
+.wedding-site .scroll:hover { color: #e7c98e; translate: 0 4px; }
+
+.wedding-site .nav-wrap { position: fixed; transition: background 300ms, box-shadow 300ms, height 300ms; }
+.wedding-site .nav-wrap.is-scrolled { height: 76px; background: #071a35f5; box-shadow: 0 6px 28px #00000018; }
+.wedding-site .nav-wrap nav a { transition: color 200ms, border-color 200ms, background 200ms; }
+.wedding-site .nav-wrap nav a:hover { color: #e7c98e; }
+.wedding-site .nav-rsvp:hover { border-color: #e7c98e; background: #caa86a15; }
+.wedding-site :is(#historia,#detalhes,#presentes,#presenca) { scroll-margin-top: 76px; }
+.wedding-experience :is(button,a,input) { transition: background-color 200ms, border-color 200ms, box-shadow 200ms, color 200ms, translate 200ms; }
+.wedding-experience input:focus { border-color: #b49a6c; box-shadow: 0 0 0 3px #caa86a12; }
+.wedding-experience button:not(:disabled):active, .wedding-experience .rsvp-link:active { translate: 0 1px; }
+.wedding-site .rsvp-link { box-shadow: 0 8px 22px #071a3512; }
+.wedding-site .rsvp-link:hover { translate: 0 -2px; box-shadow: 0 12px 26px #071a3524; }
+.wedding-site .menu-button span { transition: rotate 220ms, translate 220ms; }
+.wedding-site .menu-button[aria-expanded=true] span:first-child { rotate: 45deg; translate: 0 4px; }
+.wedding-site .menu-button[aria-expanded=true] span:last-child { rotate: -45deg; translate: 0 -4px; }
+@media (max-width: 960px) {
+  .wedding-site .nav-wrap.is-scrolled { height: 72px; }
+  .wedding-site .nav-wrap nav.open { animation: wedding-menu-arrive 250ms ease both; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .wedding-experience *, .wedding-page-enter { animation: none !important; transition: none !important; }
+  html[data-wedding-transition]::view-transition-old(root), html[data-wedding-transition]::view-transition-new(root) { animation: none !important; }
+}

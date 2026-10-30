@@ -7,3 +7,7 @@
 .details{padding:24px}.details h3{font-family:inherit;font-size:19px;font-weight:500;line-height:1.45;margin:0 0 12px;overflow-wrap:anywhere}.details p{font-size:22px;font-weight:600;margin:0;color:#745622;line-height:1.4}
 @media(max-width:960px){.grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:20px}}
 @media(max-width:600px){.grid{grid-template-columns:1fr;max-width:420px;gap:20px}.intro{margin-bottom:28px}.details{padding:20px}.empty{padding:20px}}
+
+.card{transition:box-shadow .3s,border-color .3s,translate .3s}.photo img{transition:scale .65s cubic-bezier(.22,1,.36,1)}
+@media(hover:hover) and (prefers-reduced-motion:no-preference){.card:hover{translate:0 -5px;border-color:#e9cc91;box-shadow:0 20px 44px #0003}.card:hover .photo img{scale:1.045}}
+@media(prefers-reduced-motion:reduce){.card,.photo img{transition:none}}

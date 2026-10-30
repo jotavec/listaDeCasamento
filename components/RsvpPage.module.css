@@ -159,3 +159,10 @@
 @media (min-width: 901px) and (max-height: 720px) {
   .intro { position: static; }
 }
+
+@keyframes formArrive { from { opacity:0; translate:0 12px; } to { opacity:1; translate:0 0; } }
+.searchCard,.invitationHeader,.finished,.formSection,.companions > div,.childRow,.actions { animation:formArrive 380ms cubic-bezier(.22,1,.36,1) both; }
+.primary > span,.backLink svg { transition:translate 220ms; }
+.primary:hover > span { translate:4px 0; }
+.backLink:hover svg { translate:-3px 0; }
+@media(prefers-reduced-motion:reduce) { .searchCard,.invitationHeader,.finished,.formSection,.companions > div,.childRow,.actions { animation:none; } .primary > span,.backLink svg { transition:none; } }

@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import Link from "next/link";
+import { WeddingLink } from "@/components/WeddingMotion";
 import { Monogram } from "@/components/Monogram";
 import { RsvpForm } from "@/components/RsvpForm";
 import styles from "@/components/RsvpPage.module.css";
@@ -14,12 +14,12 @@ export default function PresencePage() {
     <div className={styles.page}>
       <header className={styles.topbar}>
         <div className={styles.topbarInner}>
-          <Link className={styles.backLink} href="/casamento#presenca">
+          <WeddingLink className={styles.backLink} href="/casamento#presenca">
             <svg width="20" height="20" viewBox="0 0 24 24" fill="none" aria-hidden="true">
               <path d="m12 5-7 7 7 7M5 12h15" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
             </svg>
             Voltar ao site
-          </Link>
+          </WeddingLink>
           <span className={styles.headerDate}>26 · 03 · 2027</span>
         </div>
       </header>

@@ -1,7 +1,7 @@
 "use client";
 
-import { useState } from "react";
-import Link from "next/link";
+import { useEffect, useState } from "react";
+import { WeddingLink } from "./WeddingMotion";
 import { Monogram } from "./Monogram";
 
 const navigation = [
@@ -12,10 +12,17 @@ const navigation = [
 
 export function SiteHeader() {
   const [menuOpen, setMenuOpen] = useState(false);
+  const [scrolled, setScrolled] = useState(false);
   const closeMenu = () => setMenuOpen(false);
+  useEffect(() => {
+    const update = () => setScrolled(window.scrollY > 48);
+    update();
+    window.addEventListener("scroll", update, { passive: true });
+    return () => window.removeEventListener("scroll", update);
+  }, []);
 
   return (
-    <header className="nav-wrap">
+    <header className={`nav-wrap${scrolled ? " is-scrolled" : ""}`}>
       <a className="monogram" href="/login" aria-label="Acessar administração" onClick={closeMenu}>
         <Monogram width={120} priority />
       </a>
@@ -38,9 +45,9 @@ export function SiteHeader() {
             {item.label}
           </a>
         ))}
-        <Link className="nav-rsvp" href="/casamento/presenca" onClick={closeMenu}>
+        <WeddingLink className="nav-rsvp" href="/casamento/presenca" onClick={closeMenu}>
           Confirmar presença
-        </Link>
+        </WeddingLink>
       </nav>
     </header>
   );

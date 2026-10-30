@@ -1,9 +1,9 @@
-import Link from "next/link";
+import { WeddingLink } from "./WeddingMotion";
 import { Monogram } from "@/components/Monogram";
 
 export function RsvpSection() {
   return (
-      <section className="rsvp" id="presenca">
+      <section className="rsvp" id="presenca" data-reveal>
         <p className="section-kicker">
           Esperamos você
         </p>
@@ -16,9 +16,9 @@ export function RsvpSection() {
           tudo para este dia tão especial.
         </p>
 
-        <Link className="rsvp-link" href="/casamento/presenca">
+        <WeddingLink className="rsvp-link" href="/casamento/presenca">
           Confirmar presença
-        </Link>
+        </WeddingLink>
 
         <div className="final-monogram">
           <Monogram width={210} tone="color" />

@@ -1,6 +1,6 @@
 "use client";
 
-import Link from "next/link";
+import { WeddingLink } from "./WeddingMotion";
 import { useEffect, useRef, useState } from "react";
 import { RsvpGuestSearch } from "./RsvpGuestSearch";
 import styles from "./RsvpPage.module.css";
@@ -278,7 +278,7 @@ export function RsvpForm() {
           <p className={styles.description}>{attending
             ? "Estamos muito felizes em celebrar este dia com você. Nos vemos no grande dia!"
             : "Sentiremos sua falta e agradecemos pelo carinho."}</p>
-          <Link className={styles.primary} href="/casamento#presenca">Voltar ao site <span aria-hidden="true">→</span></Link>
+          <WeddingLink className={styles.primary} href="/casamento#presenca">Voltar ao site <span aria-hidden="true">→</span></WeddingLink>
         </div>
       )}
 

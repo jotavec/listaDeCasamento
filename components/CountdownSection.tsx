@@ -12,7 +12,7 @@ export function CountdownSection() {
         sizes="100vw"
         aria-hidden="true"
       />
-      <div className="count-content">
+      <div className="count-content" data-reveal>
         <p className="section-kicker light">Contando os dias</p>
         <h2>Para o nosso sim</h2>
         <Countdown />

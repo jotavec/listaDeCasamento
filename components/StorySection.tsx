@@ -1,6 +1,6 @@
 export function StorySection() {
   return (
-    <section className="intro" id="historia">
+    <section className="intro" id="historia" data-reveal>
       <p className="section-kicker">Uma história escrita por Deus</p>
       <h2>Do encontro ao nosso para sempre</h2>
       <div className="ornament" aria-hidden="true">✦</div>
